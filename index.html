@@ -1,0 +1,1766 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>আমাদের ভালোবাসার গল্প | চিরকালের সাথী</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Hind Siliguri & Galada for Romantic Bengali Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Galada&family=Hind+Siliguri:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Hind Siliguri', 'sans-serif'],
+                        romantic: ['Galada', 'cursive'],
+                    },
+                    colors: {
+                        blush: {
+                            50: '#fff1f5',
+                            100: '#ffe4ec',
+                            200: '#fecdd9',
+                            300: '#fda4ba',
+                            400: '#fb7196',
+                            500: '#f43f72',
+                            600: '#e11d58',
+                            700: '#be1246',
+                            800: '#9f123d',
+                            900: '#881339',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom Romantic Theme & Animations */
+        body {
+            background: linear-gradient(135deg, #ffd6e7 0%, #ffb8d6 45%, #ff9ec7 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+            color: #59112b;
+        }
+
+        .glass-card {
+            background: linear-gradient(145deg, rgba(255, 232, 242, 0.88), rgba(255, 214, 232, 0.84));
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            border: 1px solid rgba(244, 63, 114, 0.35);
+            box-shadow: 0 14px 36px -6px rgba(225, 29, 88, 0.18);
+        }
+
+        .glass-nav {
+            background: rgba(255, 224, 237, 0.94);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(244, 63, 114, 0.45);
+            box-shadow: 0 10px 30px rgba(225, 29, 88, 0.24);
+        }
+
+        /* Multi-Page View Transitions */
+        .page-view {
+            display: none;
+            animation: pageEnter 0.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+        }
+
+        .page-view.active {
+            display: block;
+        }
+
+        @keyframes pageEnter {
+            0% {
+                opacity: 0;
+                transform: translateY(18px) scale(0.985);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        /* Floating Hearts Background */
+        .floating-bg-heart {
+            position: fixed;
+            bottom: -40px;
+            color: rgba(244, 63, 114, 0.18);
+            pointer-events: none;
+            z-index: 0;
+            animation: floatUp linear infinite;
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(0) rotate(0deg) scale(0.8);
+                opacity: 0;
+            }
+            20% { opacity: 0.75; }
+            80% { opacity: 0.55; }
+            100% {
+                transform: translateY(-110vh) rotate(360deg) scale(1.25);
+                opacity: 0;
+            }
+        }
+
+        /* Heartbeat Pulse */
+        .heartbeat {
+            animation: pulseHeart 1.6s infinite ease-in-out;
+        }
+
+        @keyframes pulseHeart {
+            0%, 100% { transform: scale(1); }
+            25% { transform: scale(1.15); }
+            45% { transform: scale(0.96); }
+            65% { transform: scale(1.1); }
+        }
+
+        /* Tap Heart Burst */
+        .burst-heart {
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            animation: burstOut 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        @keyframes burstOut {
+            0% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(0.5);
+            }
+            100% {
+                opacity: 0;
+                transform: translate(calc(-50% + var(--tx)), calc(-50% + var(--ty))) scale(1.4) rotate(25deg);
+            }
+        }
+
+        /* Falling Rose Petals */
+        .falling-petal {
+            position: fixed;
+            top: -30px;
+            pointer-events: none;
+            z-index: 9998;
+            animation: petalFall linear forwards;
+        }
+
+        @keyframes petalFall {
+            0% {
+                transform: translateY(0) rotate(0deg) translateX(0);
+                opacity: 0.95;
+            }
+            50% {
+                transform: translateY(50vh) rotate(180deg) translateX(25px);
+            }
+            100% {
+                transform: translateY(108vh) rotate(360deg) translateX(-20px);
+                opacity: 0;
+            }
+        }
+
+        /* Polaroid Card Frame */
+        .polaroid {
+            background: linear-gradient(180deg, #fff5f8 0%, #ffe6ef 100%);
+            padding: 12px 12px 20px 12px;
+            border-radius: 1.5rem;
+            border: 1px solid rgba(244, 63, 114, 0.3);
+            box-shadow: 0 12px 28px -6px rgba(225, 29, 88, 0.16);
+            transition: transform 0.35s ease, box-shadow 0.35s ease;
+        }
+
+        .polaroid:hover {
+            transform: translateY(-6px) rotate(1deg);
+            box-shadow: 0 20px 36px -8px rgba(225, 29, 88, 0.25);
+        }
+
+        /* Welcome Curtain Hide Animation */
+        .curtain-hide {
+            opacity: 0;
+            transform: scale(1.06);
+            pointer-events: none;
+            transition: opacity 0.75s ease, transform 0.75s ease;
+        }
+
+        /* Hide Scrollbar for Horizontal Nav */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="pb-28 md:pb-12">
+
+    <!-- Romantic Welcome Curtain Overlay with Anniversary Lock -->
+    <div id="welcome-curtain" class="fixed inset-0 z-50 flex items-center justify-center bg-gradient-to-br from-pink-100 via-rose-100 to-pink-200 p-5 text-center">
+        <div class="glass-card max-w-md w-full rounded-[2.2rem] p-7 sm:p-10 shadow-2xl border-2 border-pink-300/80 relative overflow-hidden">
+            <div class="absolute -top-10 -right-10 w-32 h-32 bg-pink-300/40 rounded-full blur-2xl"></div>
+            <div class="absolute -bottom-10 -left-10 w-32 h-32 bg-rose-300/40 rounded-full blur-2xl"></div>
+
+            <!-- Step 1: Initial Surprise Welcome -->
+            <div id="curtain-step-welcome">
+                <div class="w-20 h-20 mx-auto rounded-full bg-gradient-to-tr from-pink-600 to-rose-400 text-white flex items-center justify-center text-3xl shadow-lg shadow-pink-300 mb-5 heartbeat">
+                    <i class="fa-solid fa-heart"></i>
+                </div>
+                <span class="inline-block px-3.5 py-1 rounded-full bg-pink-100 text-pink-700 text-sm font-bold mb-3 border border-pink-200">
+                    শুধু তোমার জন্য ✨
+                </span>
+                <h2 class="font-romantic text-3xl sm:text-4xl text-pink-800 mb-3">
+                    প্রিয়তমা নুপুর,
+                </h2>
+                <p class="text-base text-pink-900/85 leading-relaxed mb-7">
+                    আমাদের বন্ধুত্ব থেকে ভালোবাসা আর চিরকালের সাথী হওয়ার প্রতিটি মুহূর্ত আমি তোমার জন্য এখানে যত্ন করে সাজিয়ে রেখেছি...
+                </p>
+                <button onclick="showAnniversaryLock()" class="w-full py-3.5 px-6 rounded-2xl bg-gradient-to-r from-pink-600 via-rose-500 to-pink-600 hover:from-pink-700 hover:to-rose-600 text-white font-bold text-base shadow-xl shadow-pink-400/50 transition transform hover:scale-[1.02] active:scale-95 flex items-center justify-center gap-2">
+                    <span>সারপ্রাইজটি খোলো</span>
+                    <i class="fa-solid fa-heart"></i>
+                </button>
+            </div>
+
+            <!-- Step 2: Anniversary Date Lock Screen -->
+            <div id="curtain-step-lock" class="hidden">
+                <div class="w-16 h-16 mx-auto rounded-full bg-gradient-to-tr from-pink-600 to-rose-500 text-white flex items-center justify-center text-2xl shadow-lg shadow-pink-300 mb-4">
+                    <i class="fa-solid fa-lock"></i>
+                </div>
+                <span class="inline-block px-3 py-1 rounded-full bg-pink-100 text-pink-700 text-sm font-bold mb-2 border border-pink-200">
+                    সিকিউরিটি লক 🔐
+                </span>
+                <h2 class="font-romantic text-2xl sm:text-3xl text-pink-800 mb-2">
+                    আমাদের বিবাহবার্ষিকীর তারিখটি দাও 💍
+                </h2>
+                <p class="text-sm text-pink-900/85 mb-5">
+                    সঠিক তারিখ, মাস ও বছর দিয়ে আমাদের ভালোবাসার পৃথিবী আনলক করো—
+                </p>
+
+                <!-- 3 Select Inputs: Day, Month, Year -->
+                <div class="grid grid-cols-3 gap-2.5 mb-4 text-left">
+                    <div>
+                        <label for="lock-day" class="block text-xs font-bold text-pink-700 mb-1 pl-1">তারিখ (দিন)</label>
+                        <select id="lock-day" class="w-full px-2.5 py-2.5 rounded-2xl bg-white/90 border border-pink-300 text-pink-950 font-bold text-sm focus:outline-none focus:ring-2 focus:ring-pink-500">
+                            <option value="">দিন</option>
+                            <option value="1">০১</option><option value="2">০২</option><option value="3">০৩</option><option value="4">০৪</option><option value="5">০৫</option>
+                            <option value="6">০৬</option><option value="7">০৭</option><option value="8">০৮</option><option value="9">০৯</option><option value="10">১০</option>
+                            <option value="11">১১</option><option value="12">১২</option><option value="13">১৩</option><option value="14">১৪</option><option value="15">১৫</option>
+                            <option value="16">১৬</option><option value="17">১৭</option><option value="18">১৮</option><option value="19">১৯</option><option value="20">২০</option>
+                            <option value="21">২১</option><option value="22">২২</option><option value="23">২৩</option><option value="24">২৪</option><option value="25">২৫</option>
+                            <option value="26">২৬</option><option value="27">২৭</option><option value="28">২৮</option><option value="29">২৯</option><option value="30">৩০</option>
+                            <option value="31">৩১</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="lock-month" class="block text-xs font-bold text-pink-700 mb-1 pl-1">মাস</label>
+                        <select id="lock-month" class="w-full px-2.5 py-2.5 rounded-2xl bg-white/90 border border-pink-300 text-pink-950 font-bold text-sm focus:outline-none focus:ring-2 focus:ring-pink-500">
+                            <option value="">মাস</option>
+                            <option value="1">জানুয়ারি</option>
+                            <option value="2">ফেব্রুয়ারি</option>
+                            <option value="3">মার্চ</option>
+                            <option value="4">এপ্রিল</option>
+                            <option value="5">মে</option>
+                            <option value="6">জুন</option>
+                            <option value="7">জুলাই</option>
+                            <option value="8">আগস্ট</option>
+                            <option value="9">সেপ্টেম্বর</option>
+                            <option value="10">অক্টোবর</option>
+                            <option value="11">নভেম্বর</option>
+                            <option value="12">ডিসেম্বর</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="lock-year" class="block text-xs font-bold text-pink-700 mb-1 pl-1">বছর</label>
+                        <select id="lock-year" class="w-full px-2.5 py-2.5 rounded-2xl bg-white/90 border border-pink-300 text-pink-950 font-bold text-sm focus:outline-none focus:ring-2 focus:ring-pink-500">
+                            <option value="">বছর</option>
+                            <option value="2022">২০২২</option>
+                            <option value="2023">২০২৩</option>
+                            <option value="2024">২০২৪</option>
+                            <option value="2025">২০২৫</option>
+                            <option value="2026">২০২৬</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Error Feedback Message -->
+                <p id="lock-error-msg" class="hidden text-sm font-bold text-rose-600 bg-rose-100/90 border border-rose-300 rounded-xl py-2 px-3 mb-4">
+                    উফ! তারিখটি সঠিক হয়নি জান, আবার মনে করে সঠিক অ্যানিভার্সারি তারিখটি দাও 💕
+                </p>
+
+                <button onclick="verifyAnniversaryLock(event)" class="w-full py-3.5 px-6 rounded-2xl bg-gradient-to-r from-pink-600 via-rose-500 to-pink-600 hover:from-pink-700 hover:to-rose-600 text-white font-bold text-base shadow-xl shadow-pink-400/50 transition transform hover:scale-[1.02] active:scale-95 flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-unlock-keyhole"></i>
+                    <span>আনলক করো</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating Background Hearts -->
+    <div id="bg-hearts-container"></div>
+
+    <!-- Top Navigation Bar -->
+    <header class="relative z-20 pt-4 px-4 max-w-6xl mx-auto">
+        <div class="glass-card rounded-3xl px-4 sm:px-6 py-3.5 flex items-center justify-between gap-2">
+            <button onclick="navigateTo('home')" class="flex items-center gap-2.5 text-left group focus:outline-none shrink-0">
+                <div class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-pink-600 to-rose-400 flex items-center justify-center text-white shadow-md shadow-pink-300 group-hover:scale-105 transition">
+                    <i class="fa-solid fa-heart heartbeat"></i>
+                </div>
+                <div>
+                    <h1 class="font-romantic text-xl sm:text-2xl text-pink-700 leading-none">আমাদের গল্প</h1>
+                    <p class="text-xs text-pink-600 font-medium">সাজ্জাদ ও নুপুরের পৃথিবী</p>
+                </div>
+            </button>
+
+            <!-- Desktop Navigation Buttons -->
+            <nav class="hidden md:flex items-center gap-1 bg-pink-50/90 p-1.5 rounded-2xl border border-pink-200/80 overflow-x-auto no-scrollbar">
+                <button onclick="navigateTo('home')" data-nav="home" class="nav-btn shrink-0 px-3 py-2 rounded-xl text-xs font-semibold transition-all duration-300 flex items-center gap-1.5">
+                    <i class="fa-solid fa-house"></i> <span>হোম</span>
+                </button>
+                <button onclick="navigateTo('story')" data-nav="story" class="nav-btn shrink-0 px-3 py-2 rounded-xl text-xs font-semibold transition-all duration-300 flex items-center gap-1.5">
+                    <i class="fa-solid fa-book-open"></i> <span>আমাদের গল্প</span>
+                </button>
+                <button onclick="navigateTo('dates')" data-nav="dates" class="nav-btn shrink-0 px-3 py-2 rounded-xl text-xs font-semibold transition-all duration-300 flex items-center gap-1.5">
+                    <i class="fa-solid fa-calendar-days"></i> <span>বিশেষ দিন</span>
+                </button>
+                <button onclick="navigateTo('nextdays')" data-nav="nextdays" class="nav-btn shrink-0 px-3 py-2 rounded-xl text-xs font-semibold transition-all duration-300 flex items-center gap-1.5">
+                    <i class="fa-solid fa-hourglass-half"></i> <span>নেক্সট স্পেশাল ডে</span>
+                </button>
+                <button onclick="navigateTo('missyou')" data-nav="missyou" class="nav-btn shrink-0 px-3 py-2 rounded-xl text-xs font-semibold transition-all duration-300 flex items-center gap-1.5">
+                    <i class="fa-solid fa-hand-holding-heart"></i> <span>মিস করছো?</span>
+                </button>
+                <button onclick="navigateTo('gallery')" data-nav="gallery" class="nav-btn shrink-0 px-3 py-2 rounded-xl text-xs font-semibold transition-all duration-300 flex items-center gap-1.5">
+                    <i class="fa-solid fa-images"></i> <span>অ্যালবাম</span>
+                </button>
+                <button onclick="navigateTo('letter')" data-nav="letter" class="nav-btn shrink-0 px-3 py-2 rounded-xl text-xs font-semibold transition-all duration-300 flex items-center gap-1.5">
+                    <i class="fa-solid fa-envelope-open-text"></i> <span>চিঠি</span>
+                </button>
+                <button onclick="navigateTo('surprise')" data-nav="surprise" class="nav-btn shrink-0 px-3 py-2 rounded-xl text-xs font-semibold transition-all duration-300 flex items-center gap-1.5">
+                    <i class="fa-solid fa-circle-question"></i> <span>কুইজ</span>
+                </button>
+                <button onclick="navigateTo('lovemeter')" data-nav="lovemeter" class="nav-btn shrink-0 px-3 py-2 rounded-xl text-xs font-semibold transition-all duration-300 flex items-center gap-1.5">
+                    <i class="fa-solid fa-heart-pulse"></i> <span>মিটার</span>
+                </button>
+                <button onclick="navigateTo('promises')" data-nav="promises" class="nav-btn shrink-0 px-3 py-2 rounded-xl text-xs font-semibold transition-all duration-300 flex items-center gap-1.5">
+                    <i class="fa-solid fa-shield-heart"></i> <span>প্রতিজ্ঞা</span>
+                </button>
+            </nav>
+
+            <!-- Action Button: Send Love Burst -->
+            <div class="flex items-center gap-1.5 shrink-0">
+                <button onclick="triggerLoveBurst(event)" class="bg-gradient-to-r from-pink-500 to-rose-500 hover:from-pink-600 hover:to-rose-600 text-white text-sm font-semibold px-3.5 py-2 rounded-2xl shadow-md shadow-pink-300/60 active:scale-95 transition flex items-center gap-1.5">
+                    <i class="fa-solid fa-heart"></i>
+                    <span class="hidden sm:inline">ভালোবাসা পাঠাও</span>
+                    <span class="sm:hidden">Love</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Multi-Page Container -->
+    <main class="relative z-10 max-w-5xl mx-auto px-4 pt-5">
+
+        <!-- ==========================================
+             PAGE 1: HOME (HERO + LIVE ANNIVERSARY COUNTER)
+        =========================================== -->
+        <section id="page-home" class="page-view active">
+            <div class="glass-card rounded-[2rem] p-6 sm:p-10 text-center relative overflow-hidden">
+                <div class="absolute -top-12 -right-12 w-44 h-44 bg-pink-300/30 rounded-full blur-2xl"></div>
+                <div class="absolute -bottom-12 -left-12 w-44 h-44 bg-rose-300/30 rounded-full blur-2xl"></div>
+
+                <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-pink-100 text-pink-700 text-sm font-semibold mb-4 border border-pink-200 shadow-sm">
+                    <i class="fa-solid fa-sparkles text-pink-500"></i> শুধু তোমার জন্য আমার হৃদয়ের ছোট্ট পৃথিবী
+                </span>
+
+                <h2 class="font-romantic text-4xl sm:text-6xl text-pink-700 mb-3 drop-shadow-sm">
+                    আমাদের ভালোবাসার গল্প
+                </h2>
+
+                <p class="text-pink-950/85 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed mb-6">
+                    একই ক্লাসের বেঞ্চ থেকে শুরু হওয়া বন্ধুত্ব, লুকিয়ে রাখা ভালোবাসা, আর সব বাধা পেরিয়ে চিরকালের মতো এক হওয়ার গল্প। তুমি আছো বলেই আমার জীবনটা এত সুন্দর।
+                </p>
+
+                <!-- Live Anniversary Counter (Counting from 25 March 2024) -->
+                <div class="bg-gradient-to-br from-pink-500 via-rose-500 to-pink-600 rounded-3xl p-5 sm:p-7 text-white shadow-xl shadow-pink-300/60 max-w-3xl mx-auto mb-7">
+                    <div class="flex items-center justify-center gap-2 text-pink-50 text-sm sm:text-base font-semibold tracking-wide mb-1">
+                        <i class="fa-solid fa-heart text-pink-200 heartbeat"></i>
+                        <span>আমাদের প্রথম শুভ বিবাহের পর থেকে একসাথে পথচলা (২৫ মার্চ, ২০২৪)</span>
+                    </div>
+                    <p class="text-sm text-pink-100/95 mb-4">আমাদের অফিসিয়াল অ্যানিভার্সারি তারিখ থেকে প্রতিটা সেকেন্ডের হিসাব</p>
+
+                    <div class="grid grid-cols-3 sm:grid-cols-6 gap-2.5 sm:gap-3">
+                        <div class="bg-white/20 backdrop-blur-md rounded-2xl p-2.5 sm:p-3 border border-white/25">
+                            <div id="count-years" class="text-2xl sm:text-3xl font-bold">০</div>
+                            <div class="text-xs sm:text-sm text-pink-100">বছর</div>
+                        </div>
+                        <div class="bg-white/20 backdrop-blur-md rounded-2xl p-2.5 sm:p-3 border border-white/25">
+                            <div id="count-months" class="text-2xl sm:text-3xl font-bold">০</div>
+                            <div class="text-xs sm:text-sm text-pink-100">মাস</div>
+                        </div>
+                        <div class="bg-white/20 backdrop-blur-md rounded-2xl p-2.5 sm:p-3 border border-white/25">
+                            <div id="count-days" class="text-2xl sm:text-3xl font-bold">০</div>
+                            <div class="text-xs sm:text-sm text-pink-100">দিন</div>
+                        </div>
+                        <div class="bg-white/20 backdrop-blur-md rounded-2xl p-2.5 sm:p-3 border border-white/25">
+                            <div id="count-hours" class="text-2xl sm:text-3xl font-bold">০</div>
+                            <div class="text-xs sm:text-sm text-pink-100">ঘণ্টা</div>
+                        </div>
+                        <div class="bg-white/20 backdrop-blur-md rounded-2xl p-2.5 sm:p-3 border border-white/25">
+                            <div id="count-minutes" class="text-2xl sm:text-3xl font-bold">০</div>
+                            <div class="text-xs sm:text-sm text-pink-100">মিনিট</div>
+                        </div>
+                        <div class="bg-white/20 backdrop-blur-md rounded-2xl p-2.5 sm:p-3 border border-white/25">
+                            <div id="count-seconds" class="text-2xl sm:text-3xl font-bold">০</div>
+                            <div class="text-xs sm:text-sm text-pink-100">সেকেন্ড</div>
+                        </div>
+                    </div>
+
+                    <div class="mt-4 pt-3 border-t border-white/20 text-sm text-pink-50 flex flex-wrap items-center justify-center gap-2">
+                        <i class="fa-solid fa-champagne-glasses"></i>
+                        <span id="next-anniversary-text">পরবর্তী অ্যানিভার্সারি (২৫ মার্চ) আসতে বাকি...</span>
+                    </div>
+                </div>
+
+                <!-- Interactive Page Switcher Buttons -->
+                <h3 class="text-sm sm:text-base font-bold text-pink-800 uppercase tracking-wider text-center mb-4">
+                    নিচের বাটনগুলোতে ক্লিক করে আমাদের স্মৃতির পাতাগুলো ঘুরে দেখো ✨
+                </h3>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5 text-left">
+                    <button onclick="navigateTo('story')" class="group bg-gradient-to-br from-pink-100/95 via-rose-100/90 to-pink-200/80 hover:from-pink-500 hover:to-rose-500 p-4 rounded-3xl border border-pink-300/80 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between active:scale-95">
+                        <div class="w-11 h-11 rounded-2xl bg-pink-200/90 group-hover:bg-white/20 text-pink-700 group-hover:text-white flex items-center justify-center text-lg mb-3 transition">
+                            <i class="fa-solid fa-book-open-reader"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-lg text-pink-950 group-hover:text-white transition">আমাদের গল্প</h4>
+                            <p class="text-sm text-pink-800 group-hover:text-pink-100 mt-1 transition">ক্লাস টেন থেকে বিয়ের ৬টি অধ্যায়</p>
+                        </div>
+                        <div class="mt-3 text-sm font-semibold text-pink-600 group-hover:text-white flex items-center gap-1">
+                            <span>গল্পটি পড়ো</span> <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition"></i>
+                        </div>
+                    </button>
+
+                    <button onclick="navigateTo('dates')" class="group bg-gradient-to-br from-pink-100/95 via-rose-100/90 to-pink-200/80 hover:from-pink-500 hover:to-rose-500 p-4 rounded-3xl border border-pink-300/80 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between active:scale-95">
+                        <div class="w-11 h-11 rounded-2xl bg-pink-200/90 group-hover:bg-white/20 text-pink-700 group-hover:text-white flex items-center justify-center text-lg mb-3 transition">
+                            <i class="fa-solid fa-calendar-check"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-lg text-pink-950 group-hover:text-white transition">বিশেষ দিনগুলো</h4>
+                            <p class="text-sm text-pink-800 group-hover:text-pink-100 mt-1 transition">বন্ধুত্ব, বিয়ে ও জন্মদিনের তারিখ</p>
+                        </div>
+                        <div class="mt-3 text-sm font-semibold text-pink-600 group-hover:text-white flex items-center gap-1">
+                            <span>তারিখ দেখো</span> <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition"></i>
+                        </div>
+                    </button>
+
+                    <button onclick="navigateTo('nextdays')" class="group bg-gradient-to-br from-pink-100/95 via-rose-100/90 to-pink-200/80 hover:from-pink-500 hover:to-rose-500 p-4 rounded-3xl border border-pink-300/80 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between active:scale-95">
+                        <div class="w-11 h-11 rounded-2xl bg-pink-200/90 group-hover:bg-white/20 text-pink-700 group-hover:text-white flex items-center justify-center text-lg mb-3 transition">
+                            <i class="fa-solid fa-hourglass-half"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-lg text-pink-950 group-hover:text-white transition">নেক্সট স্পেশাল ডে</h4>
+                            <p class="text-sm text-pink-800 group-hover:text-pink-100 mt-1 transition">নুপুর ও সাজ্জাদের বার্থডে ও অ্যানিভার্সারি কাউন্টডাউন</p>
+                        </div>
+                        <div class="mt-3 text-sm font-semibold text-pink-600 group-hover:text-white flex items-center gap-1">
+                            <span>কাউন্টডাউন দেখো</span> <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition"></i>
+                        </div>
+                    </button>
+
+                    <button onclick="navigateTo('lovemeter')" class="group bg-gradient-to-br from-pink-100/95 via-rose-100/90 to-pink-200/80 hover:from-pink-500 hover:to-rose-500 p-4 rounded-3xl border border-pink-300/80 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between active:scale-95">
+                        <div class="w-11 h-11 rounded-2xl bg-pink-200/90 group-hover:bg-white/20 text-pink-700 group-hover:text-white flex items-center justify-center text-lg mb-3 transition">
+                            <i class="fa-solid fa-heart-pulse"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-lg text-pink-950 group-hover:text-white transition">ভালোবাসা মিটার</h4>
+                            <p class="text-sm text-pink-800 group-hover:text-pink-100 mt-1 transition">দেখো তো ভালোবাসা মাপা যায় কি না!</p>
+                        </div>
+                        <div class="mt-3 text-sm font-semibold text-pink-600 group-hover:text-white flex items-center gap-1">
+                            <span>মিটার পরীক্ষা করো</span> <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition"></i>
+                        </div>
+                    </button>
+
+                    <button onclick="navigateTo('gallery')" class="group bg-gradient-to-br from-pink-100/95 via-rose-100/90 to-pink-200/80 hover:from-pink-500 hover:to-rose-500 p-4 rounded-3xl border border-pink-300/80 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between active:scale-95">
+                        <div class="w-11 h-11 rounded-2xl bg-pink-200/90 group-hover:bg-white/20 text-pink-700 group-hover:text-white flex items-center justify-center text-lg mb-3 transition">
+                            <i class="fa-solid fa-camera-retro"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-lg text-pink-950 group-hover:text-white transition">ফটো অ্যালবাম</h4>
+                            <p class="text-sm text-pink-800 group-hover:text-pink-100 mt-1 transition">আমাদের প্রিয় মুহূর্তগুলোর ফ্রেম</p>
+                        </div>
+                        <div class="mt-3 text-sm font-semibold text-pink-600 group-hover:text-white flex items-center gap-1">
+                            <span>ছবি দেখো</span> <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition"></i>
+                        </div>
+                    </button>
+
+                    <button onclick="navigateTo('letter')" class="group bg-gradient-to-br from-pink-100/95 via-rose-100/90 to-pink-200/80 hover:from-pink-500 hover:to-rose-500 p-4 rounded-3xl border border-pink-300/80 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between active:scale-95">
+                        <div class="w-11 h-11 rounded-2xl bg-pink-200/90 group-hover:bg-white/20 text-pink-700 group-hover:text-white flex items-center justify-center text-lg mb-3 transition">
+                            <i class="fa-solid fa-envelope-open-text"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-lg text-pink-950 group-hover:text-white transition">লাভ লেটার</h4>
+                            <p class="text-sm text-pink-800 group-hover:text-pink-100 mt-1 transition">তোমার জন্য লেখা বিশেষ চিঠি</p>
+                        </div>
+                        <div class="mt-3 text-sm font-semibold text-pink-600 group-hover:text-white flex items-center gap-1">
+                            <span>চিঠিটি খোলো</span> <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition"></i>
+                        </div>
+                    </button>
+
+                    <button onclick="navigateTo('surprise')" class="group bg-gradient-to-br from-pink-100/95 via-rose-100/90 to-pink-200/80 hover:from-pink-500 hover:to-rose-500 p-4 rounded-3xl border border-pink-300/80 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between active:scale-95">
+                        <div class="w-11 h-11 rounded-2xl bg-pink-200/90 group-hover:bg-white/20 text-pink-700 group-hover:text-white flex items-center justify-center text-lg mb-3 transition">
+                            <i class="fa-solid fa-circle-question"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-lg text-pink-950 group-hover:text-white transition">ভালোবাসার কুইজ</h4>
+                            <p class="text-sm text-pink-800 group-hover:text-pink-100 mt-1 transition">আমাদের স্মৃতি নিয়ে মজার কুইজ</p>
+                        </div>
+                        <div class="mt-3 text-sm font-semibold text-pink-600 group-hover:text-white flex items-center gap-1">
+                            <span>কুইজ খেলো</span> <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition"></i>
+                        </div>
+                    </button>
+
+                    <button onclick="navigateTo('missyou')" class="group bg-gradient-to-br from-pink-100/95 via-rose-100/90 to-pink-200/80 hover:from-pink-500 hover:to-rose-500 p-4 rounded-3xl border border-pink-300/80 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between active:scale-95">
+                        <div class="w-11 h-11 rounded-2xl bg-pink-200/90 group-hover:bg-white/20 text-pink-700 group-hover:text-white flex items-center justify-center text-lg mb-3 transition">
+                            <i class="fa-solid fa-hand-holding-heart"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-lg text-pink-950 group-hover:text-white transition">আমাকে মিস করছো?</h4>
+                            <p class="text-sm text-pink-800 group-hover:text-pink-100 mt-1 transition">দূরে থাকলেও তোমার পাশেই আছি</p>
+                        </div>
+                        <div class="mt-3 text-sm font-semibold text-pink-600 group-hover:text-white flex items-center gap-1">
+                            <span>বার্তা দেখো</span> <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition"></i>
+                        </div>
+                    </button>
+
+                    <button onclick="navigateTo('promises')" class="group bg-gradient-to-br from-pink-100/95 via-rose-100/90 to-pink-200/80 hover:from-pink-500 hover:to-rose-500 p-4 rounded-3xl border border-pink-300/80 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between active:scale-95">
+                        <div class="w-11 h-11 rounded-2xl bg-pink-200/90 group-hover:bg-white/20 text-pink-700 group-hover:text-white flex items-center justify-center text-lg mb-3 transition">
+                            <i class="fa-solid fa-shield-heart"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-lg text-pink-950 group-hover:text-white transition">আমার প্রতিজ্ঞা</h4>
+                            <p class="text-sm text-pink-800 group-hover:text-pink-100 mt-1 transition">সারাজীবন পাশে থাকার অঙ্গীকার</p>
+                        </div>
+                        <div class="mt-3 text-sm font-semibold text-pink-600 group-hover:text-white flex items-center gap-1">
+                            <span>প্রতিজ্ঞা পড়ো</span> <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition"></i>
+                        </div>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================
+             PAGE 2: OUR STORY (6 INTERACTIVE CHAPTERS)
+        =========================================== -->
+        <section id="page-story" class="page-view">
+            <div class="glass-card rounded-[2rem] p-6 sm:p-8">
+                <div class="flex items-start justify-between gap-2 mb-6 border-b border-pink-200 pb-4">
+                    <div class="min-w-0">
+                        <span class="text-sm font-bold uppercase tracking-wider text-pink-600">অধ্যায়ভিত্তিক ভালোবাসার উপাখ্যান</span>
+                        <h2 class="font-romantic text-3xl sm:text-4xl text-pink-700 mt-1">আমাদের রূপকথার গল্প</h2>
+                    </div>
+                    <button onclick="navigateTo('home')" class="shrink-0 px-3.5 py-2 rounded-2xl bg-gradient-to-r from-pink-500 to-rose-500 hover:from-pink-600 hover:to-rose-600 text-white text-xs sm:text-sm font-bold shadow-md shadow-pink-300/60 transition flex items-center gap-1.5 active:scale-95">
+                        <i class="fa-solid fa-arrow-left"></i> হোমে ফিরুন
+                    </button>
+                </div>
+
+                <!-- Chapter Selector Buttons -->
+                <div class="flex flex-wrap gap-2 mb-6" id="chapter-tabs"></div>
+
+                <!-- Active Chapter Card -->
+                <div id="chapter-display" class="bg-pink-50/90 rounded-3xl p-6 sm:p-8 border border-pink-200 shadow-inner transition-all duration-300"></div>
+
+                <!-- Previous / Next Controls -->
+                <div class="flex items-center justify-between mt-6">
+                    <button id="prev-chapter-btn" onclick="changeChapter(-1)" class="px-4 sm:px-5 py-2.5 rounded-2xl bg-pink-100 hover:bg-pink-200 text-pink-800 border border-pink-300 font-semibold text-sm shadow-sm transition flex items-center gap-2 disabled:opacity-40">
+                        <i class="fa-solid fa-chevron-left"></i> আগের অধ্যায়
+                    </button>
+                    <span id="chapter-indicator" class="text-sm font-bold text-pink-600 bg-pink-100 px-3.5 py-1.5 rounded-full">
+                        অধ্যায় ১ / ৬
+                    </span>
+                    <button id="next-chapter-btn" onclick="changeChapter(1)" class="px-4 sm:px-5 py-2.5 rounded-2xl bg-gradient-to-r from-pink-500 to-rose-500 hover:from-pink-600 hover:to-rose-600 text-white font-semibold text-sm shadow-md transition flex items-center gap-2 disabled:opacity-40">
+                        পরের অধ্যায় <i class="fa-solid fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================
+             PAGE 3: SPECIAL DATES VAULT (ALL 8 DATES)
+        =========================================== -->
+        <section id="page-dates" class="page-view">
+            <div class="glass-card rounded-[2rem] p-6 sm:p-8">
+                <div class="flex items-start justify-between gap-2 mb-6 border-b border-pink-200 pb-4">
+                    <div class="min-w-0">
+                        <span class="text-sm font-bold uppercase tracking-wider text-pink-600">আমাদের জীবনের অমূল্য মাইলফলক</span>
+                        <h2 class="font-romantic text-3xl sm:text-4xl text-pink-700 mt-1">আমাদের বিশেষ দিনগুলো</h2>
+                    </div>
+                    <button onclick="navigateTo('home')" class="shrink-0 px-3.5 py-2 rounded-2xl bg-gradient-to-r from-pink-500 to-rose-500 hover:from-pink-600 hover:to-rose-600 text-white text-xs sm:text-sm font-bold shadow-md shadow-pink-300/60 transition flex items-center gap-1.5 active:scale-95">
+                        <i class="fa-solid fa-arrow-left"></i> হোমে ফিরুন
+                    </button>
+                </div>
+
+                <!-- Category Filter Buttons -->
+                <div class="flex flex-wrap gap-2 mb-6">
+                    <button onclick="filterDates('all', this)" class="date-filter-btn px-4 py-1.5 rounded-full text-sm font-semibold bg-pink-600 text-white shadow-sm transition">সবগুলো দিন (৮)</button>
+                    <button onclick="filterDates('love', this)" class="date-filter-btn px-4 py-1.5 rounded-full text-sm font-semibold bg-white text-pink-700 border border-pink-200 hover:bg-pink-50 transition">প্রেম ও বিবাহ</button>
+                    <button onclick="filterDates('birthday', this)" class="date-filter-btn px-4 py-1.5 rounded-full text-sm font-semibold bg-white text-pink-700 border border-pink-200 hover:bg-pink-50 transition">আমাদের জন্মদিন</button>
+                    <button onclick="filterDates('milestone', this)" class="date-filter-btn px-4 py-1.5 rounded-full text-sm font-semibold bg-white text-pink-700 border border-pink-200 hover:bg-pink-50 transition">নতুন অধ্যায়</button>
+                </div>
+
+                <!-- Special Dates Grid -->
+                <div id="special-dates-grid" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
+            </div>
+        </section>
+
+        <!-- ==========================================
+             PAGE 3B: NEXT SPECIAL DAY LIVE COUNTDOWNS
+        =========================================== -->
+        <section id="page-nextdays" class="page-view">
+            <div class="glass-card rounded-[2rem] p-6 sm:p-8">
+                <div class="flex items-start justify-between gap-2 mb-6 border-b border-pink-200 pb-4">
+                    <div class="min-w-0">
+                        <span class="text-sm font-bold uppercase tracking-wider text-pink-600">আসন্ন আনন্দের দিনগুলোর অপেক্ষা</span>
+                        <h2 class="font-romantic text-3xl sm:text-4xl text-pink-700 mt-1">নেক্সট স্পেশাল ডে কাউন্টডাউন</h2>
+                    </div>
+                    <button onclick="navigateTo('home')" class="shrink-0 px-3.5 py-2 rounded-2xl bg-gradient-to-r from-pink-500 to-rose-500 hover:from-pink-600 hover:to-rose-600 text-white text-xs sm:text-sm font-bold shadow-md shadow-pink-300/60 transition flex items-center gap-1.5 active:scale-95">
+                        <i class="fa-solid fa-arrow-left"></i> হোমে ফিরুন
+                    </button>
+                </div>
+
+                <p class="text-sm sm:text-base text-pink-900/90 mb-6 bg-pink-50/90 p-4 rounded-2xl border border-pink-200/70 leading-relaxed">
+                    আমাদের জীবনের সবচেয়ে প্রিয় দিনগুলো আসতে আর ঠিক কত মাস, কত দিন, কত ঘণ্টা, কত মিনিট ও কত সেকেন্ড বাকি তা নিচে লাইভ চলছে ✨
+                </p>
+
+                <!-- 5 Live Countdown Cards -->
+                <div id="next-special-days-grid" class="grid grid-cols-1 md:grid-cols-2 gap-5"></div>
+            </div>
+        </section>
+
+        <!-- ==========================================
+             PAGE 4: PHOTO ALBUM
+        =========================================== -->
+        <section id="page-gallery" class="page-view">
+            <div class="glass-card rounded-[2rem] p-6 sm:p-8">
+                <div class="flex items-start justify-between gap-2 mb-6 border-b border-pink-200 pb-4">
+                    <div class="min-w-0">
+                        <span class="text-sm font-bold uppercase tracking-wider text-pink-600">ফ্রেমে বন্দী ভালোবাসা</span>
+                        <h2 class="font-romantic text-3xl sm:text-4xl text-pink-700 mt-1">আমাদের স্মৃতির অ্যালবাম</h2>
+                    </div>
+                    <button onclick="navigateTo('home')" class="shrink-0 px-3.5 py-2 rounded-2xl bg-gradient-to-r from-pink-500 to-rose-500 hover:from-pink-600 hover:to-rose-600 text-white text-xs sm:text-sm font-bold shadow-md shadow-pink-300/60 transition flex items-center gap-1.5 active:scale-95">
+                        <i class="fa-solid fa-arrow-left"></i> হোমে ফিরুন
+                    </button>
+                </div>
+
+                <!-- 6 Polaroid Frames Grid -->
+                <div id="photo-gallery-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+            </div>
+        </section>
+
+        <!-- ==========================================
+             PAGE 5: INTERACTIVE SEALED LOVE LETTER
+        =========================================== -->
+        <section id="page-letter" class="page-view">
+            <div class="glass-card rounded-[2rem] p-6 sm:p-10 text-center">
+                <div class="flex items-start justify-between gap-2 mb-6 border-b border-pink-200 pb-4">
+                    <div class="text-left min-w-0">
+                        <span class="text-sm font-bold uppercase tracking-wider text-pink-600">হৃদয়ের গভীর থেকে লেখা</span>
+                        <h2 class="font-romantic text-3xl sm:text-4xl text-pink-700 mt-1">শুধু তোমার জন্য একটি চিঠি</h2>
+                    </div>
+                    <button onclick="navigateTo('home')" class="shrink-0 px-3.5 py-2 rounded-2xl bg-gradient-to-r from-pink-500 to-rose-500 hover:from-pink-600 hover:to-rose-600 text-white text-xs sm:text-sm font-bold shadow-md shadow-pink-300/60 transition flex items-center gap-1.5 active:scale-95">
+                        <i class="fa-solid fa-arrow-left"></i> হোমে ফিরুন
+                    </button>
+                </div>
+
+                <!-- Sealed Wax Envelope -->
+                <div class="max-w-2xl mx-auto my-4">
+                    <div id="sealed-box" class="bg-gradient-to-br from-pink-200 via-rose-200 to-pink-300 p-8 sm:p-12 rounded-3xl border-2 border-pink-300 shadow-xl relative overflow-hidden">
+                        <div class="w-20 h-20 mx-auto rounded-full bg-gradient-to-tr from-pink-600 to-rose-500 text-white flex items-center justify-center text-3xl shadow-lg mb-4 heartbeat">
+                            <i class="fa-solid fa-heart"></i>
+                        </div>
+                        <h3 class="font-romantic text-3xl text-pink-800 mb-2">প্রিয়তমা নুপুর,</h3>
+                        <p class="text-base text-pink-900/90 mb-6">এই সিল করা খামের ভেতরে তোমার জন্য আমার কিছু না বলা অনুভূতি জমা আছে...</p>
+                        <button onclick="openLoveLetter(event)" class="px-7 py-3.5 rounded-2xl bg-gradient-to-r from-pink-600 to-rose-500 hover:from-pink-700 hover:to-rose-600 text-white font-bold text-base shadow-lg shadow-pink-400/50 transition transform hover:scale-105 active:scale-95 flex items-center gap-2 mx-auto">
+                            <i class="fa-solid fa-envelope-open"></i> চিঠিটি খুলুন
+                        </button>
+                    </div>
+
+                    <!-- Opened Love Letter -->
+                    <div id="opened-letter-box" class="hidden text-left bg-gradient-to-br from-pink-50 via-rose-50 to-pink-100 p-6 sm:p-9 rounded-3xl border-2 border-pink-300 shadow-xl relative">
+                        <div class="border-b border-pink-200 pb-3 mb-4">
+                            <span id="letter-salutation" class="font-romantic text-2xl sm:text-3xl text-pink-700">আমার প্রিয় নুপুর,</span>
+                        </div>
+
+                        <div id="letter-body-paragraphs" class="space-y-4 text-pink-950/90 text-base leading-relaxed">
+                            <p>
+                                আজও যখন পেছনে ফিরে তাকাই, অবাক হয়ে ভাবি—একই ক্লাসে পড়া দুইজন সাধারণ বন্ধু কীভাবে একে অপরের পুরো পৃথিবী হয়ে উঠলাম! <strong>৬ই আগস্ট, ২০২৩</strong>-এ যেদিন আমরা বেস্ট ফ্রেন্ড হয়েছিলাম, আর তার কিছুদিন পর <strong>৩১শে অক্টোবর, ২০২৩</strong>-এ যেদিন আমাদের ভালোবাসার সম্পর্ক শুরু হয়েছিল—সেদিনও জানতাম না তুমি আমার জীবনের সবচেয়ে সুন্দর অধ্যায় হতে চলেছ।
+                            </p>
+                            <p>
+                                ক্লাস টেনের সেই দিনগুলো, একসাথে প্রাইভেট পড়া, আর ফোনে তোমার সেই একটি প্রশ্ন—<em>"তুই কি আমাকে ভালোবাসিস?"</em>—আমার জীবনের সেরা মুহূর্ত। আমাদের ভালোবাসাকে পূর্ণতা দিতে পরীক্ষার পর <strong>২৪শে মার্চ, ২০২৪</strong>-এ হাতে হাত রেখে ঢাকায় ছুটে যাওয়া এবং <strong>২৫শে মার্চ, ২০২৪</strong>-এ তোমাকে নিজের করে পাওয়া—এই সাহস শুধু তোমার ভালোবাসার জন্যই সম্ভব হয়েছিল।
+                            </p>
+                            <p>
+                                সৃষ্টিকর্তার অশেষ রহমতে <strong>২৫শে সেপ্টেম্বর, ২০২৪</strong>-এ দুই পরিবারের সম্মতিতে আবারও যখন নতুন করে তোমাকে বিয়ে করলাম, মনে হয়েছিল পৃথিবীর সবচেয়ে সুখী মানুষ আমি।
+                            </p>
+                            <p>
+                                <strong>১৭ই জানুয়ারি, ২০২৫</strong> থেকে পড়াশোনার জন্য আমাকে চাঁপাইনবাবগঞ্জ পলিটেকনিকে থাকতে হচ্ছে। তোমাকে ছেড়ে দূরে থাকতে আমারও ভীষণ কষ্ট হয়, কিন্তু আমাদের সুন্দর ভবিষ্যতের জন্যই এই পথচলা। মাঝে মাঝে ছুটিতে বাড়ি ফিরে তোমার সাথে কাটানো সময়গুলোই আমার সবচেয়ে বড় শক্তি। এভাবেই সারাজীবন পাশে থেকো প্রিয়তমা।
+                            </p>
+                            <p class="font-semibold text-pink-700 pt-2">
+                                ইতি,<br>
+                                তোমারই পাগল সাজ্জাদ ❤️
+                            </p>
+                        </div>
+
+                        <!-- Interactive Love Meter -->
+                        <div class="mt-7 pt-5 border-t border-pink-100 text-center">
+                            <button onclick="showLoveMeter(event)" class="px-6 py-3 rounded-2xl bg-gradient-to-r from-rose-500 to-pink-600 text-white font-bold text-base shadow-md hover:shadow-lg transition active:scale-95 flex items-center gap-2 mx-auto">
+                                <i class="fa-solid fa-heart-pulse"></i> তোমাকে কতটা ভালোবাসি? (ট্যাপ করো)
+                            </button>
+                            <p id="love-quote-output" class="mt-3 text-base font-semibold text-pink-700 min-h-[24px]"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================
+             PAGE 6: COUPLE QUIZ ONLY
+        =========================================== -->
+        <section id="page-surprise" class="page-view">
+            <div class="glass-card rounded-[2rem] p-6 sm:p-8">
+                <div class="flex items-start justify-between gap-2 mb-6 border-b border-pink-200 pb-4">
+                    <div class="min-w-0">
+                        <span class="text-sm font-bold uppercase tracking-wider text-pink-600">তোমার মুখে হাসি ফোটানোর জন্য</span>
+                        <h2 class="font-romantic text-3xl sm:text-4xl text-pink-700 mt-1">আমাদের ভালোবাসার কুইজ</h2>
+                    </div>
+                    <button onclick="navigateTo('home')" class="shrink-0 px-3.5 py-2 rounded-2xl bg-gradient-to-r from-pink-500 to-rose-500 hover:from-pink-600 hover:to-rose-600 text-white text-xs sm:text-sm font-bold shadow-md shadow-pink-300/60 transition flex items-center gap-1.5 active:scale-95">
+                        <i class="fa-solid fa-arrow-left"></i> হোমে ফিরুন
+                    </button>
+                </div>
+
+                <div class="max-w-2xl mx-auto">
+                    <!-- Sweet Couple Quiz -->
+                    <div class="bg-pink-50/95 rounded-3xl p-6 sm:p-8 border border-pink-200 shadow-md">
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="px-3.5 py-1 rounded-full bg-pink-100 text-pink-700 text-sm font-bold">ভালোবাসার পরীক্ষা 💕</span>
+                            <span id="quiz-progress" class="text-sm font-bold text-pink-600 bg-pink-50 px-3 py-1 rounded-full border border-pink-200">প্রশ্ন ১ / ৫</span>
+                        </div>
+                        <h3 class="font-romantic text-2xl sm:text-3xl text-pink-800 mb-5">দেখি তো তোমার কতটা মনে আছে!</h3>
+
+                        <div id="quiz-container"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================
+             PAGE 6B: MISS YOU / DISTANCE LOVE PAGE
+        =========================================== -->
+        <section id="page-missyou" class="page-view">
+            <div class="glass-card rounded-[2rem] p-6 sm:p-8 text-center">
+                <div class="flex items-start justify-between gap-2 mb-6 border-b border-pink-200 pb-4 text-left">
+                    <div class="min-w-0">
+                        <span class="text-sm font-bold uppercase tracking-wider text-pink-600">দূরত্ব শুধুই একটি সংখ্যা</span>
+                        <h2 class="font-romantic text-3xl sm:text-4xl text-pink-700 mt-1">যখনই আমাকে মিস করবে...</h2>
+                    </div>
+                    <button onclick="navigateTo('home')" class="shrink-0 px-3.5 py-2 rounded-2xl bg-gradient-to-r from-pink-500 to-rose-500 hover:from-pink-600 hover:to-rose-600 text-white text-xs sm:text-sm font-bold shadow-md shadow-pink-300/60 transition flex items-center gap-1.5 active:scale-95">
+                        <i class="fa-solid fa-arrow-left"></i> হোমে ফিরুন
+                    </button>
+                </div>
+
+                <div class="max-w-xl mx-auto bg-pink-50/95 rounded-3xl p-6 sm:p-9 border border-pink-200 shadow-md">
+                    <div class="w-20 h-20 mx-auto rounded-full bg-gradient-to-tr from-pink-500 to-rose-500 text-white flex items-center justify-center text-3xl shadow-lg mb-4 heartbeat">
+                        <i class="fa-solid fa-hand-holding-heart"></i>
+                    </div>
+                    <h3 class="font-romantic text-2xl sm:text-3xl text-pink-800 mb-2">প্রিয়তমা নুপুর,</h3>
+                    <p class="text-sm sm:text-base text-pink-900/90 mb-6 leading-relaxed">
+                        পড়াশোনার কারণে চাঁপাইনবাবগঞ্জে দূরে থাকলেও আমার মন সবসময় তোমার কাছেই পড়ে থাকে। আমাকে মিস করলে নিচের বাটনে ট্যাপ করো—
+                    </p>
+
+                    <div id="missyou-message-card" class="bg-gradient-to-br from-pink-50 via-rose-50 to-pink-100 rounded-3xl p-5 sm:p-6 border border-pink-200 mb-6 min-h-[115px] flex items-center justify-center shadow-inner">
+                        <p id="missyou-text" class="font-romantic text-xl sm:text-2xl text-pink-800 leading-relaxed">
+                            "মন খারাপ করো না জান, দূরত্ব যতই থাকুক আমার হৃদয় প্রতি মুহূর্তে তোমার পাশেই আছে। ❤️"
+                        </p>
+                    </div>
+
+                    <button onclick="sendVirtualHug(event)" class="w-full sm:w-auto px-7 py-3.5 rounded-2xl bg-gradient-to-r from-pink-600 to-rose-500 hover:from-pink-700 hover:to-rose-600 text-white font-bold text-base shadow-lg shadow-pink-300/60 transition transform hover:scale-105 active:scale-95 flex items-center justify-center gap-2 mx-auto">
+                        <i class="fa-solid fa-heart"></i>
+                        <span>আরেকটি বার্তা পড়ো 💕</span>
+                    </button>
+                    <p id="missyou-counter" class="mt-3 text-sm font-semibold text-pink-600">বার্তা ১ / ১৫</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================
+             PAGE 6C: MY PROMISES TO NUPUR
+        =========================================== -->
+        <section id="page-promises" class="page-view">
+            <div class="glass-card rounded-[2rem] p-6 sm:p-8">
+                <div class="flex items-start justify-between gap-2 mb-6 border-b border-pink-200 pb-4">
+                    <div class="min-w-0">
+                        <span class="text-sm font-bold uppercase tracking-wider text-pink-600">চিরকালের অঙ্গীকার</span>
+                        <h2 class="font-romantic text-3xl sm:text-4xl text-pink-700 mt-1">তোমার প্রতি আমার প্রতিজ্ঞা</h2>
+                    </div>
+                    <button onclick="navigateTo('home')" class="shrink-0 px-3.5 py-2 rounded-2xl bg-gradient-to-r from-pink-500 to-rose-500 hover:from-pink-600 hover:to-rose-600 text-white text-xs sm:text-sm font-bold shadow-md shadow-pink-300/60 transition flex items-center gap-1.5 active:scale-95">
+                        <i class="fa-solid fa-arrow-left"></i> হোমে ফিরুন
+                    </button>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="bg-pink-50/95 rounded-3xl p-5 border border-pink-200 shadow-sm flex items-start gap-3.5">
+                        <div class="w-10 h-10 shrink-0 rounded-2xl bg-pink-200 text-pink-700 flex items-center justify-center font-bold">১</div>
+                        <div>
+                            <h3 class="font-bold text-pink-950 text-lg">সবসময় তোমার বেস্ট ফ্রেন্ড হয়ে থাকব</h3>
+                            <p class="text-sm sm:text-base text-pink-900/85 mt-1 leading-relaxed">স্বামী-স্ত্রীর সম্পর্কের পাশাপাশি ৬ই আগস্টের সেই বেস্ট ফ্রেন্ডের মতোই সারাজীবন তোমার সব কথা মন দিয়ে শুনব।</p>
+                        </div>
+                    </div>
+                    <div class="bg-pink-50/95 rounded-3xl p-5 border border-pink-200 shadow-sm flex items-start gap-3.5">
+                        <div class="w-10 h-10 shrink-0 rounded-2xl bg-rose-200 text-rose-700 flex items-center justify-center font-bold">২</div>
+                        <div>
+                            <h3 class="font-bold text-pink-950 text-lg">নিজেকে প্রতিষ্ঠিত করে তোমার সব স্বপ্ন পূরণ করব</h3>
+                            <p class="text-sm sm:text-base text-pink-900/85 mt-1 leading-relaxed">চাঁপাইনবাবগঞ্জ পলিটেকনিকে পড়াশোনা শেষ করে নিজের পায়ে দাঁড়িয়ে তোমাকে পৃথিবীর সবচেয়ে সুখী মানুষ হিসেবে রাখব ইনশাআল্লাহ।</p>
+                        </div>
+                    </div>
+                    <div class="bg-pink-50/95 rounded-3xl p-5 border border-pink-200 shadow-sm flex items-start gap-3.5">
+                        <div class="w-10 h-10 shrink-0 rounded-2xl bg-pink-200 text-pink-700 flex items-center justify-center font-bold">৩</div>
+                        <div>
+                            <h3 class="font-bold text-pink-950 text-lg">তোমার চোখের কোণে কখনো জল আসতে দেব না</h3>
+                            <p class="text-sm sm:text-base text-pink-900/85 mt-1 leading-relaxed">তোমার মুখের ওই মিষ্টি হাসিটা ধরে রাখার জন্য আমি সারাজীবন তোমাকে ভালোবাসায় ও যত্নে ভরিয়ে রাখব।</p>
+                        </div>
+                    </div>
+                    <div class="bg-pink-50/95 rounded-3xl p-5 border border-pink-200 shadow-sm flex items-start gap-3.5">
+                        <div class="w-10 h-10 shrink-0 rounded-2xl bg-rose-200 text-rose-700 flex items-center justify-center font-bold">৪</div>
+                        <div>
+                            <h3 class="font-bold text-pink-950 text-lg">কোনো পরিস্থিতিতেই তোমার হাত ছাড়ব না</h3>
+                            <p class="text-sm sm:text-base text-pink-900/85 mt-1 leading-relaxed">যেভাবে ২৪ ও ২৫শে মার্চ সব বাধা পেরিয়ে তোমাকে নিজের করেছিলাম, সারাজীবন ঠিক সেভাবেই আগলে রাখব।</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================
+             PAGE 7: LOVE METER (OVERLOADS & EXPLODES)
+        =========================================== -->
+        <section id="page-lovemeter" class="page-view">
+            <div class="glass-card rounded-[2rem] p-6 sm:p-8 text-center">
+                <div class="flex items-start justify-between gap-2 mb-6 border-b border-pink-200 pb-4 text-left">
+                    <div class="min-w-0">
+                        <span class="text-sm font-bold uppercase tracking-wider text-pink-600">পরিমাপের বাইরের অনুভূতি</span>
+                        <h2 class="font-romantic text-3xl sm:text-4xl text-pink-700 mt-1">ভালোবাসা মাপক মিটার</h2>
+                    </div>
+                    <button onclick="navigateTo('home')" class="shrink-0 px-3.5 py-2 rounded-2xl bg-gradient-to-r from-pink-500 to-rose-500 hover:from-pink-600 hover:to-rose-600 text-white text-xs sm:text-sm font-bold shadow-md shadow-pink-300/60 transition flex items-center gap-1.5 active:scale-95">
+                        <i class="fa-solid fa-arrow-left"></i> হোমে ফিরুন
+                    </button>
+                </div>
+
+                <div class="max-w-xl mx-auto bg-pink-50/95 rounded-3xl p-6 sm:p-9 border border-pink-200 shadow-md">
+                    <p class="text-sm sm:text-base text-pink-900/90 mb-6 leading-relaxed">
+                        দেখি তো এই মিটার দিয়ে তোমাকে কতটা ভালোবাসি তা মাপা যায় কি না! নিচের হার্ট বাটনে বারবার ট্যাপ করতে থাকো... ❤️
+                    </p>
+
+                    <!-- Meter Progress Bar -->
+                    <div class="mb-3 flex items-center justify-between text-sm font-bold text-pink-700">
+                        <span>ভালোবাসার মাত্রা:</span>
+                        <span id="meter-percent-text" class="text-base sm:text-lg text-rose-600">০%</span>
+                    </div>
+
+                    <div class="w-full h-7 bg-pink-100 rounded-full p-1 border border-pink-200 overflow-hidden mb-7 shadow-inner">
+                        <div id="meter-fill-bar" class="h-full rounded-full bg-gradient-to-r from-pink-400 via-rose-500 to-red-600 transition-all duration-300 flex items-center justify-end pr-2" style="width: 0%;">
+                        </div>
+                    </div>
+
+                    <!-- Interactive Tap Heart / Explosion State -->
+                    <div id="meter-interactive-area" class="py-2">
+                        <button id="meter-tap-btn" onclick="tapLoveMeter(event)" class="w-28 h-28 sm:w-32 sm:h-32 mx-auto rounded-full bg-gradient-to-tr from-pink-600 via-rose-500 to-pink-400 text-white shadow-xl shadow-pink-300/80 flex flex-col items-center justify-center transition-transform duration-150 active:scale-90 hover:scale-105 cursor-pointer border-4 border-white">
+                            <i id="meter-heart-icon" class="fa-solid fa-heart text-4xl sm:text-5xl heartbeat"></i>
+                            <span class="text-xs font-bold mt-1.5 tracking-wide">ট্যাপ করো!</span>
+                        </button>
+                        <p id="meter-hint-text" class="mt-4 text-sm font-semibold text-pink-600">
+                            ট্যাপ করে মিটারটি পূর্ণ করো 💕
+                        </p>
+                    </div>
+
+                    <!-- Exploded / Infinite Love Result Box -->
+                    <div id="meter-exploded-box" class="hidden mt-2 bg-gradient-to-br from-pink-50 via-rose-50 to-pink-100 rounded-3xl p-6 border-2 border-rose-300 shadow-lg animate-[pageEnter_0.45s_ease-out]">
+                        <div class="text-4xl sm:text-5xl mb-3">💥💖♾️</div>
+                        <span class="inline-block px-3.5 py-1 rounded-full bg-rose-600 text-white text-sm font-bold mb-2">
+                            সতর্কবার্তা: মিটার ওভারলোড হয়ে ফেটে গেছে!
+                        </span>
+                        <h3 id="meter-result-title" class="font-romantic text-2xl sm:text-3xl text-rose-700 mb-2">
+                            আমার ভালোবাসা অসীম, এটা মাপা যায় না!
+                        </h3>
+                        <p id="meter-result-desc" class="text-sm sm:text-base text-pink-950/90 leading-relaxed mb-5">
+                            পৃথিবীর কোনো মিটার বা যন্ত্রের সাধ্য নেই তোমাকে আমি কতটা ভালোবাসি তা পরিমাপ করার! তুমি আমার নিঃশ্বাস, আমার পুরো পৃথিবী। ❤️
+                        </p>
+                        <button onclick="resetLoveMeter()" class="px-5 py-2.5 rounded-2xl bg-gradient-to-r from-pink-500 to-rose-500 hover:from-pink-600 hover:to-rose-600 text-white text-sm font-bold shadow-md transition">
+                            আবার পরীক্ষা করো ✨
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Mobile Bottom Horizontal Slideable Pill Navigation -->
+    <nav class="md:hidden fixed bottom-3 left-2.5 right-2.5 z-40 glass-nav rounded-3xl px-2.5 py-2.5">
+        <div class="flex items-center gap-2 overflow-x-auto no-scrollbar snap-x">
+            <button onclick="navigateTo('home')" data-nav="home" class="nav-btn-mobile shrink-0 snap-start flex items-center gap-2 py-2.5 px-4 rounded-2xl text-sm font-bold transition">
+                <i class="fa-solid fa-house text-base"></i>
+                <span>হোম</span>
+            </button>
+            <button onclick="navigateTo('story')" data-nav="story" class="nav-btn-mobile shrink-0 snap-start flex items-center gap-2 py-2.5 px-4 rounded-2xl text-sm font-bold transition">
+                <i class="fa-solid fa-book-open text-base"></i>
+                <span>আমাদের গল্প</span>
+            </button>
+            <button onclick="navigateTo('dates')" data-nav="dates" class="nav-btn-mobile shrink-0 snap-start flex items-center gap-2 py-2.5 px-4 rounded-2xl text-sm font-bold transition">
+                <i class="fa-solid fa-calendar-days text-base"></i>
+                <span>বিশেষ দিন</span>
+            </button>
+            <button onclick="navigateTo('nextdays')" data-nav="nextdays" class="nav-btn-mobile shrink-0 snap-start flex items-center gap-2 py-2.5 px-4 rounded-2xl text-sm font-bold transition">
+                <i class="fa-solid fa-hourglass-half text-base"></i>
+                <span>নেক্সট স্পেশাল ডে</span>
+            </button>
+            <button onclick="navigateTo('missyou')" data-nav="missyou" class="nav-btn-mobile shrink-0 snap-start flex items-center gap-2 py-2.5 px-4 rounded-2xl text-sm font-bold transition">
+                <i class="fa-solid fa-hand-holding-heart text-base"></i>
+                <span>মিস করছো?</span>
+            </button>
+            <button onclick="navigateTo('gallery')" data-nav="gallery" class="nav-btn-mobile shrink-0 snap-start flex items-center gap-2 py-2.5 px-4 rounded-2xl text-sm font-bold transition">
+                <i class="fa-solid fa-images text-base"></i>
+                <span>অ্যালবাম</span>
+            </button>
+            <button onclick="navigateTo('letter')" data-nav="letter" class="nav-btn-mobile shrink-0 snap-start flex items-center gap-2 py-2.5 px-4 rounded-2xl text-sm font-bold transition">
+                <i class="fa-solid fa-envelope text-base"></i>
+                <span>চিঠি</span>
+            </button>
+            <button onclick="navigateTo('surprise')" data-nav="surprise" class="nav-btn-mobile shrink-0 snap-start flex items-center gap-2 py-2.5 px-4 rounded-2xl text-sm font-bold transition">
+                <i class="fa-solid fa-circle-question text-base"></i>
+                <span>কুইজ</span>
+            </button>
+            <button onclick="navigateTo('lovemeter')" data-nav="lovemeter" class="nav-btn-mobile shrink-0 snap-start flex items-center gap-2 py-2.5 px-4 rounded-2xl text-sm font-bold transition">
+                <i class="fa-solid fa-heart-pulse text-base"></i>
+                <span>ভালোবাসা মিটার</span>
+            </button>
+            <button onclick="navigateTo('promises')" data-nav="promises" class="nav-btn-mobile shrink-0 snap-start flex items-center gap-2 py-2.5 px-4 rounded-2xl text-sm font-bold transition">
+                <i class="fa-solid fa-shield-heart text-base"></i>
+                <span>প্রতিজ্ঞা</span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Fullscreen Lightbox Modal for Viewing Photos -->
+    <div id="lightbox-modal" onclick="closeLightbox()" class="fixed inset-0 z-50 hidden items-center justify-center bg-pink-950/85 backdrop-blur-md p-4">
+        <div onclick="event.stopPropagation()" class="bg-white p-3 sm:p-4 rounded-3xl max-w-2xl w-full shadow-2xl">
+            <div class="relative rounded-2xl overflow-hidden bg-pink-50 max-h-[70vh] flex items-center justify-center">
+                <img id="lightbox-img" src="" alt="Full View" class="max-h-[70vh] w-auto object-contain">
+                <button onclick="closeLightbox()" class="absolute top-3 right-3 w-9 h-9 rounded-full bg-white/90 text-pink-700 flex items-center justify-center shadow-md hover:bg-pink-100">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <div class="text-center mt-3 mb-1">
+                <span id="lightbox-date" class="inline-block text-sm font-bold text-pink-500 bg-pink-50 px-3 py-0.5 rounded-full mb-1"></span>
+                <p id="lightbox-caption" class="font-romantic text-2xl text-pink-800"></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        (function() {
+        // ==========================================
+        // 1. HELPER: BENGALI DIGITS CONVERTER
+        // ==========================================
+        function toBnDigits(num) {
+            const bn = ['০', '১', '২', '৩', '৪', '৫', '৬', '৭', '৮', '৯'];
+            return String(num).replace(/\d/g, d => bn[d]);
+        }
+
+        // ==========================================
+        // 2. MULTI-PAGE NAVIGATION CONTROLLER
+        // ==========================================
+        let savedHomeScrollY = 0;
+
+        window.navigateTo = function(pageId) {
+            const homeSection = document.getElementById('page-home');
+            const wasOnHome = homeSection && homeSection.classList.contains('active');
+
+            // Save scroll position when leaving Home page
+            if (wasOnHome && pageId !== 'home') {
+                savedHomeScrollY = window.scrollY || window.pageYOffset || 0;
+            }
+
+            document.querySelectorAll('.page-view').forEach(sec => {
+                sec.classList.remove('active');
+            });
+
+            const target = document.getElementById('page-' + pageId);
+            if (target) {
+                target.classList.add('active');
+            }
+
+            // Desktop Nav Active State
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                if (btn.dataset.nav === pageId) {
+                    btn.className = "nav-btn shrink-0 px-3 py-2 rounded-xl text-xs font-bold transition-all duration-300 flex items-center gap-1.5 bg-gradient-to-r from-pink-500 to-rose-500 text-white shadow-md shadow-pink-300/60";
+                } else {
+                    btn.className = "nav-btn shrink-0 px-3 py-2 rounded-xl text-xs font-semibold transition-all duration-300 flex items-center gap-1.5 text-pink-800 hover:bg-pink-100/80";
+                }
+            });
+
+            // Mobile Slideable Nav Active State + Auto Center Scroll
+            document.querySelectorAll('.nav-btn-mobile').forEach(btn => {
+                if (btn.dataset.nav === pageId) {
+                    btn.className = "nav-btn-mobile shrink-0 snap-start flex items-center gap-2 py-2.5 px-4 rounded-2xl text-sm font-bold transition bg-gradient-to-r from-pink-500 to-rose-500 text-white shadow-md shadow-pink-300/60";
+                    btn.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+                } else {
+                    btn.className = "nav-btn-mobile shrink-0 snap-start flex items-center gap-2 py-2.5 px-4 rounded-2xl text-sm font-semibold transition text-pink-900 bg-pink-100/90 border border-pink-200/80 hover:bg-pink-200/80";
+                }
+            });
+
+            // Restore exact scroll position when returning to Home, otherwise scroll to top
+            if (pageId === 'home') {
+                if (wasOnHome) {
+                    savedHomeScrollY = 0;
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                } else {
+                    requestAnimationFrame(() => {
+                        window.scrollTo({ top: savedHomeScrollY, behavior: 'instant' });
+                    });
+                }
+            } else {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        };
+
+        // ==========================================
+        // 3. LIVE ANNIVERSARY COUNTER (FROM 25 MAR 2024)
+        // ==========================================
+        function updateLiveCounters() {
+            const weddingDate = new Date(2024, 2, 25, 0, 0, 0); // March 25, 2024
+            const now = new Date();
+
+            if (now < weddingDate) return;
+
+            let years = now.getFullYear() - weddingDate.getFullYear();
+            let months = now.getMonth() - weddingDate.getMonth();
+            let days = now.getDate() - weddingDate.getDate();
+            let hours = now.getHours() - weddingDate.getHours();
+            let minutes = now.getMinutes() - weddingDate.getMinutes();
+            let seconds = now.getSeconds() - weddingDate.getSeconds();
+
+            if (seconds < 0) { seconds += 60; minutes--; }
+            if (minutes < 0) { minutes += 60; hours--; }
+            if (hours < 0) { hours += 24; days--; }
+            if (days < 0) {
+                const prevMonth = new Date(now.getFullYear(), now.getMonth(), 0);
+                days += prevMonth.getDate();
+                months--;
+            }
+            if (months < 0) {
+                months += 12;
+                years--;
+            }
+
+            const elY = document.getElementById('count-years');
+            const elM = document.getElementById('count-months');
+            const elD = document.getElementById('count-days');
+            const elH = document.getElementById('count-hours');
+            const elMin = document.getElementById('count-minutes');
+            const elS = document.getElementById('count-seconds');
+
+            if (elY) elY.textContent = toBnDigits(years);
+            if (elM) elM.textContent = toBnDigits(months);
+            if (elD) elD.textContent = toBnDigits(days);
+            if (elH) elH.textContent = toBnDigits(hours);
+            if (elMin) elMin.textContent = toBnDigits(minutes);
+            if (elS) elS.textContent = toBnDigits(seconds);
+
+            // Next Anniversary Countdown (25 March)
+            let nextAnniv = new Date(now.getFullYear(), 2, 25, 0, 0, 0);
+            if (now >= nextAnniv) {
+                nextAnniv = new Date(now.getFullYear() + 1, 2, 25, 0, 0, 0);
+            }
+            const diffDays = Math.ceil((nextAnniv - now) / (1000 * 60 * 60 * 24));
+            const nextText = document.getElementById('next-anniversary-text');
+            if (nextText) {
+                if (now.getMonth() === 2 && now.getDate() === 25) {
+                    nextText.textContent = "আজ আমাদের শুভ বিবাহবার্ষিকী! হ্যাপি অ্যানিভার্সারি প্রিয়তমা! 🎉💍❤️";
+                } else {
+                    nextText.textContent = `পরবর্তী অ্যানিভার্সারি (২৫ মার্চ) আসতে আর মাত্র ${toBnDigits(diffDays)} দিন বাকি!`;
+                }
+            }
+
+            // Update Next Special Days Live Countdowns
+            updateNextSpecialDays();
+        }
+
+        // ==========================================
+        // 4. OUR STORY CHAPTERS (6 CHAPTERS)
+        // ==========================================
+        const storyChapters = [
+            {
+                badge: "অধ্যায় ১",
+                title: "ক্লাস ফ্রেন্ড থেকে বেস্ট ফ্রেন্ড (৬ আগস্ট, ২০২৩)",
+                date: "৬ আগস্ট, ২০২৩",
+                icon: "fa-user-group",
+                text: "একই ক্লাসে পড়াশোনা করতাম আমরা। সাধারণ ক্লাস ফ্রেন্ড হিসেবে কথা বলতে বলতে কখন যে একে অপরের সবচেয়ে কাছের মানুষ হয়ে গেলাম বুঝতেই পারিনি। ৬ই আগস্ট, ২০২৩-এ আমরা অফিশিয়ালি একে অপরের বেস্ট ফ্রেন্ড হলাম। ফেসফ্রেন্ড হিসেবে আমাদের দিনগুলো স্বপ্নের মতো সুন্দর কাটছিল।"
+            },
+            {
+                badge: "অধ্যায় ২",
+                title: "ফোনে সেই জাদুকরী প্রশ্ন ও ভালোবাসার শুরু (৩১ অক্টোবর, ২০২৩)",
+                date: "৩১ অক্টোবর, ২০২৩",
+                icon: "fa-phone-volume",
+                text: "বেস্ট ফ্রেন্ড হয়ে কথা বলতে বলতেই আমি তোমাকে মনে মনে ভালোবাসতে শুরু করলাম, তোমার প্রতি ভীষণ দুর্বল হয়ে পড়লাম। তুমিও আস্তে আস্তে সেটা বুঝতে পারলে। ৩১শে অক্টোবর, ২০২৩-এ ফোনে কথা বলার সময় তুমি আমাকে অবাক করে দিয়ে জিজ্ঞেস করলে—'তুই কি আমাকে ভালোবাসিস?' আমি একটুও দেরি না করে বললাম 'হ্যাঁ', আর তুমিও রাজি হয়ে গেলে! সেদিন থেকেই শুরু হলো আমাদের ভালোবাসার সম্পর্ক।"
+            },
+            {
+                badge: "অধ্যায় ৩",
+                title: "একসাথে প্রাইভেট পড়া ও বড় সিদ্ধান্ত",
+                date: "পরীক্ষার আগে",
+                icon: "fa-book-open",
+                text: "আমরা ও আমাদের বন্ধুরা মিলে একসাথে প্রাইভেট পড়া শুরু করলাম। ফোনে কথা বলতে বলতে আমাদের ভালোবাসা আরও গভীর হলো। কিন্তু আমরা জানতাম বাসা থেকে আমাদের সম্পর্ক মেনে নেবে না। তাই পরীক্ষার মাঝেই দুজনে সাহসী সিদ্ধান্ত নিলাম—পরীক্ষা শেষ হলেই ঢাকায় গিয়ে বিয়ে করব, আর সেই অনুযায়ী দুজনে মিলে টাকা জমাতে শুরু করলাম।"
+            },
+            {
+                badge: "অধ্যায় ৪",
+                title: "ঢাকা যাত্রা ও প্রথম শুভ বিবাহ (২৫ মার্চ, ২০২৪)",
+                date: "২৪ ও ২৫ মার্চ, ২০২৪",
+                icon: "fa-ring",
+                text: "পরীক্ষা শেষ হওয়ার পর ২৪শে মার্চ, ২০২৪-এ দুজনে একসাথে ঢাকার উদ্দেশ্যে রওনা দিলাম। কিছু বাধা-বিপত্তি পার করে তোমার নানি বাড়িতে পৌঁছালাম এবং পরদিন ২৫শে মার্চ, ২০২৪-এ আমাদের শুভ বিবাহ সম্পন্ন হলো! এক সপ্তাহ ঢাকায় থাকার পর আমার পরিবার আমাদের মেনে নিল এবং ঈদুল ফিতর একসাথে কাটালাম।"
+            },
+            {
+                badge: "অধ্যায় ৫",
+                title: "দুই পরিবারের সম্মতিতে দ্বিতীয় বিবাহ (২৫ সেপ্টেম্বর, ২০২৪)",
+                date: "২৫ সেপ্টেম্বর, ২০২৪",
+                icon: "fa-hands-praying",
+                text: "প্রায় ছয় মাস পর তোমার পরিবারও আমাদের ভালোবাসাকে মেনে নিল। তবে সবকিছু আরও সুন্দর ও পরিপূর্ণভাবে করার জন্য দুই পরিবারের সম্মতিতে ২৫শে সেপ্টেম্বর, ২০২৪-এ আবারও আমাদের দুজনের নতুন করে বিয়ে পড়ানো হলো! সেদিন আমাদের আনন্দ ছিল আকাশছোঁয়া।"
+            },
+            {
+                badge: "অধ্যায় ৬",
+                title: "চাঁপাইনবাবগঞ্জ পলিটেকনিক ও দূরত্বের ভালোবাসা",
+                date: "১৭ জানুয়ারি, ২০২৫ - বর্তমান",
+                icon: "fa-graduation-cap",
+                text: "পড়াশোনার পরবর্তী ধাপে চাঁপাইনবাবগঞ্জ পলিটেকনিক ইনস্টিটিউটে চান্স পাওয়ার পর ১৭ই জানুয়ারি, ২০২৫-এ আমাকে এখানে চলে আসতে হলো। তোমাকে ছেড়ে দূরে থাকতে ভীষণ কষ্ট হলেও আমাদের সুন্দর ভবিষ্যতের জন্যই এই পথচলা। মাঝে মাঝে ছুটিতে বাড়ি গিয়ে তোমার সাথে কাটানো সুন্দর মুহূর্তগুলোই আমাকে নতুন করে শক্তি জোগায়।"
+            }
+        ];
+        let currentChapterIndex = 0;
+
+        window.selectChapter = function(index) {
+            currentChapterIndex = index;
+            renderChapterContent();
+        };
+
+        window.changeChapter = function(delta) {
+            const next = currentChapterIndex + delta;
+            if (next >= 0 && next < storyChapters.length) {
+                currentChapterIndex = next;
+                renderChapterContent();
+            }
+        };
+
+        function renderChapterContent() {
+            const tabsEl = document.getElementById('chapter-tabs');
+            const displayEl = document.getElementById('chapter-display');
+            const indEl = document.getElementById('chapter-indicator');
+            const prevBtn = document.getElementById('prev-chapter-btn');
+            const nextBtn = document.getElementById('next-chapter-btn');
+            if (!tabsEl || !displayEl) return;
+
+            tabsEl.innerHTML = storyChapters.map((ch, idx) => `
+                <button onclick="selectChapter(${idx})" class="px-4 py-1.5 rounded-full text-sm font-bold transition ${idx === currentChapterIndex ? 'bg-pink-600 text-white shadow-sm' : 'bg-white text-pink-700 border border-pink-200 hover:bg-pink-50'}">
+                    ${ch.badge}
+                </button>
+            `).join('');
+
+            const ch = storyChapters[currentChapterIndex];
+            displayEl.innerHTML = `
+                <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+                    <span class="px-3.5 py-1 rounded-full bg-pink-100 text-pink-700 text-sm font-bold">${ch.badge} • ${ch.date}</span>
+                    <div class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-pink-500 to-rose-500 text-white flex items-center justify-center shadow">
+                        <i class="fa-solid ${ch.icon}"></i>
+                    </div>
+                </div>
+                <h3 class="font-romantic text-2xl sm:text-3xl text-pink-800 mb-3">${ch.title}</h3>
+                <p class="text-base text-pink-950/90 leading-relaxed">${ch.text}</p>
+            `;
+
+            if (indEl) indEl.textContent = `অধ্যায় ${toBnDigits(currentChapterIndex + 1)} / ${toBnDigits(storyChapters.length)}`;
+            if (prevBtn) prevBtn.disabled = currentChapterIndex === 0;
+            if (nextBtn) nextBtn.disabled = currentChapterIndex === storyChapters.length - 1;
+        }
+
+        // ==========================================
+        // 5. SPECIAL DATES VAULT (ALL 8 DATES)
+        // ==========================================
+        const specialDatesData = [
+            {
+                date: "৬ আগস্ট, ২০২৩",
+                title: "বেস্ট ফ্রেন্ড হওয়ার দিন (ফ্রেন্ডশিপ ডে)",
+                tag: "বন্ধুত্বের শুরু 🤝",
+                desc: "ক্লাস ফ্রেন্ড থেকে যেদিন আমরা একে অপরের সবচেয়ে কাছের বেস্ট ফ্রেন্ড হয়েছিলাম।",
+                category: "love",
+                icon: "fa-user-group"
+            },
+            {
+                date: "৩১ অক্টোবর, ২০২৩",
+                title: "রিলেশনশিপ শুরুর দিন (ভালোবাসার শুরু)",
+                tag: "প্রেমের সূচনা ❤️",
+                desc: "ফোনে তোমার সেই মিষ্টি প্রশ্নের পর যেদিন আমাদের বন্ধুত্ব ভালোবাসার সম্পর্কে রূপ নিয়েছিল।",
+                category: "love",
+                icon: "fa-heart"
+            },
+            {
+                date: "২৪ মার্চ, ২০২৪",
+                title: "ভালোবাসার টানে ঢাকা যাত্রা",
+                tag: "সাহসী পদক্ষেপ 🚀",
+                desc: "পরীক্ষা শেষ করে সব বাধা পেছনে ফেলে হাতে হাত রেখে ঢাকার উদ্দেশ্যে রওনা হওয়া।",
+                category: "love",
+                icon: "fa-train"
+            },
+            {
+                date: "২৫ মার্চ, ২০২৪",
+                title: "আমাদের প্রথম শুভ বিবাহ (অ্যানিভার্সারি)",
+                tag: "অফিশিয়াল অ্যানিভার্সারি 💍",
+                desc: "ঢাকায় যেদিন তুমি চিরকালের জন্য আমার জীবনসঙ্গী হয়েছিলে—আমাদের আসল অ্যানিভার্সারি দিন!",
+                category: "love",
+                icon: "fa-ring"
+            },
+            {
+                date: "২৫ সেপ্টেম্বর, ২০২৪",
+                title: "দুই পরিবারের সম্মতিতে দ্বিতীয় বিবাহ",
+                tag: "পারিবারিক স্বীকৃতি 💖",
+                desc: "দুই পরিবারের ভালোবাসা ও দোয়ায় নতুন করে আবার আমাদের শুভ বিবাহ সম্পন্ন হওয়ার দিন।",
+                category: "love",
+                icon: "fa-hands-praying"
+            },
+            {
+                date: "১৭ জানুয়ারি, ২০২৫",
+                title: "চাঁপাইনবাবগঞ্জ পলিটেকনিকে যাত্রা",
+                tag: "নতুন অধ্যায় 🎓",
+                desc: "আমাদের সুন্দর ভবিষ্যৎ গড়ার লক্ষ্যে পড়াশোনার জন্য চাঁপাইনবাবগঞ্জে আসার দিন।",
+                category: "milestone",
+                icon: "fa-graduation-cap"
+            },
+            {
+                date: "২৬ ফেব্রুয়ারি, ২০০৭",
+                title: "নুপুরের শুভ জন্মদিন (প্রিয়তমা স্ত্রী)",
+                tag: "রানির জন্মদিন 👑",
+                desc: "যেদিন পৃথিবীতে এসেছিলে তুমি—আমার জীবনের সবচেয়ে বড় আল্লাহর নিয়ামত ও ভালোবাসা!",
+                category: "birthday",
+                icon: "fa-cake-candles"
+            },
+            {
+                date: "২০ মে, ২০০৮",
+                title: "সাজ্জাদের শুভ জন্মদিন",
+                tag: "আমার জন্মদিন 🎂",
+                desc: "তোমার পাগল ভালোবাসার মানুষটির পৃথিবীতে আসার দিন।",
+                category: "birthday",
+                icon: "fa-gift"
+            }
+        ];
+
+        window.filterDates = function(category, btnEl) {
+            if (btnEl) {
+                document.querySelectorAll('.date-filter-btn').forEach(b => {
+                    b.className = "date-filter-btn px-4 py-1.5 rounded-full text-sm font-semibold bg-white text-pink-700 border border-pink-200 hover:bg-pink-50 transition";
+                });
+                btnEl.className = "date-filter-btn px-4 py-1.5 rounded-full text-sm font-semibold bg-pink-600 text-white shadow-sm transition";
+            }
+            renderSpecialDates(category);
+        };
+
+        function renderSpecialDates(category = 'all') {
+            const grid = document.getElementById('special-dates-grid');
+            if (!grid) return;
+
+            const filtered = category === 'all'
+                ? specialDatesData
+                : specialDatesData.filter(d => d.category === category);
+
+            grid.innerHTML = filtered.map(item => `
+                <div class="bg-gradient-to-br from-pink-50 via-rose-50 to-pink-100/90 rounded-3xl p-5 border border-pink-200 shadow-sm hover:shadow-md transition flex items-start gap-4">
+                    <div class="w-12 h-12 shrink-0 rounded-2xl bg-gradient-to-tr from-pink-500 to-rose-500 text-white flex items-center justify-center text-lg shadow">
+                        <i class="fa-solid ${item.icon}"></i>
+                    </div>
+                    <div class="flex-1 min-w-0">
+                        <div class="flex flex-wrap items-center justify-between gap-1.5 mb-1.5">
+                            <span class="px-3 py-0.5 rounded-full bg-pink-200/80 text-pink-800 text-sm font-bold">${item.date}</span>
+                            <span class="text-xs font-bold text-rose-600">${item.tag}</span>
+                        </div>
+                        <h3 class="font-bold text-lg text-pink-950">${item.title}</h3>
+                        <p class="text-sm sm:text-base text-pink-900/85 mt-1 leading-relaxed">${item.desc}</p>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // ==========================================
+        // 5B. NEXT SPECIAL DAYS LIVE COUNTDOWNS
+        // ==========================================
+        const upcomingSpecialEvents = [
+            { id: "nupur-bday", title: "নুপুরের বার্থডে 👑", dateText: "২৬ ফেব্রুয়ারি", month: 1, day: 26, icon: "fa-cake-candles" },
+            { id: "anniv-day", title: "নেক্সট অ্যানিভার্সারি ডে 💍", dateText: "২৫ মার্চ", month: 2, day: 25, icon: "fa-ring" },
+            { id: "sazzad-bday", title: "সাজ্জাদের বার্থডে 🎂", dateText: "২০ মে", month: 4, day: 20, icon: "fa-gift" },
+            { id: "friend-day", title: "নেক্সট ফ্রেন্ডশিপ ডে 🤝", dateText: "৬ আগস্ট", month: 7, day: 6, icon: "fa-user-group" },
+            { id: "rel-day", title: "নেক্সট রিলেশনশিপ ডে ❤️", dateText: "৩১ অক্টোবর", month: 9, day: 31, icon: "fa-heart" }
+        ];
+
+        function getNextOccurrenceDiff(month, day) {
+            const now = new Date();
+            if (now.getMonth() === month && now.getDate() === day) {
+                return { isToday: true };
+            }
+
+            let target = new Date(now.getFullYear(), month, day, 0, 0, 0);
+            if (now >= target) {
+                target = new Date(now.getFullYear() + 1, month, day, 0, 0, 0);
+            }
+
+            let years = target.getFullYear() - now.getFullYear();
+            let months = target.getMonth() - now.getMonth() + years * 12;
+            let days = target.getDate() - now.getDate();
+            let hours = target.getHours() - now.getHours();
+            let minutes = target.getMinutes() - now.getMinutes();
+            let seconds = target.getSeconds() - now.getSeconds();
+
+            if (seconds < 0) { seconds += 60; minutes--; }
+            if (minutes < 0) { minutes += 60; hours--; }
+            if (hours < 0) { hours += 24; days--; }
+            if (days < 0) {
+                const prevMonthDays = new Date(target.getFullYear(), target.getMonth(), 0).getDate();
+                days += prevMonthDays;
+                months--;
+            }
+
+            return { isToday: false, months, days, hours, minutes, seconds };
+        }
+
+        function updateNextSpecialDays() {
+            const grid = document.getElementById('next-special-days-grid');
+            if (!grid) return;
+
+            grid.innerHTML = upcomingSpecialEvents.map(ev => {
+                const diff = getNextOccurrenceDiff(ev.month, ev.day);
+                if (diff.isToday) {
+                    return `
+                        <div class="bg-gradient-to-br from-pink-500 to-rose-600 text-white rounded-3xl p-5 shadow-lg border border-pink-300">
+                            <div class="flex items-center justify-between mb-2">
+                                <h3 class="font-bold text-lg">${ev.title}</h3>
+                                <span class="px-3 py-1 rounded-full bg-white/20 text-sm font-bold">${ev.dateText}</span>
+                            </div>
+                            <p class="font-romantic text-2xl py-4 text-center">আজই সেই বিশেষ দিন! শুভকামনা ও ভালোবাসা 🎉❤️</p>
+                        </div>
+                    `;
+                }
+
+                return `
+                    <div class="bg-gradient-to-br from-pink-50 via-rose-50 to-pink-100/90 rounded-3xl p-5 border border-pink-200 shadow-sm hover:shadow-md transition">
+                        <div class="flex items-center justify-between mb-3">
+                            <div class="flex items-center gap-2.5">
+                                <div class="w-10 h-10 rounded-2xl bg-pink-200/90 text-pink-700 flex items-center justify-center">
+                                    <i class="fa-solid ${ev.icon}"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-pink-950 text-base sm:text-lg">${ev.title}</h3>
+                                    <span class="text-sm font-semibold text-pink-600">${ev.dateText}</span>
+                                </div>
+                            </div>
+                            <span class="text-xs font-bold px-2.5 py-1 rounded-full bg-rose-100 text-rose-600 border border-rose-200">বাকি আছে</span>
+                        </div>
+                        <div class="grid grid-cols-5 gap-1.5 text-center">
+                            <div class="bg-pink-100/90 rounded-2xl py-2 px-1 border border-pink-200/80">
+                                <div class="text-lg sm:text-xl font-bold text-pink-700">${toBnDigits(diff.months)}</div>
+                                <div class="text-xs font-semibold text-pink-600">মাস</div>
+                            </div>
+                            <div class="bg-pink-100/90 rounded-2xl py-2 px-1 border border-pink-200/80">
+                                <div class="text-lg sm:text-xl font-bold text-pink-700">${toBnDigits(diff.days)}</div>
+                                <div class="text-xs font-semibold text-pink-600">দিন</div>
+                            </div>
+                            <div class="bg-pink-100/90 rounded-2xl py-2 px-1 border border-pink-200/80">
+                                <div class="text-lg sm:text-xl font-bold text-pink-700">${toBnDigits(diff.hours)}</div>
+                                <div class="text-xs font-semibold text-pink-600">ঘণ্টা</div>
+                            </div>
+                            <div class="bg-pink-100/90 rounded-2xl py-2 px-1 border border-pink-200/80">
+                                <div class="text-lg sm:text-xl font-bold text-pink-700">${toBnDigits(diff.minutes)}</div>
+                                <div class="text-xs font-semibold text-pink-600">মিনিট</div>
+                            </div>
+                            <div class="bg-rose-100 rounded-2xl py-2 px-1 border border-rose-300">
+                                <div class="text-lg sm:text-xl font-bold text-rose-600">${toBnDigits(diff.seconds)}</div>
+                                <div class="text-xs font-semibold text-rose-600">সেকেন্ড</div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // ==========================================
+        // 6. PHOTO GALLERY (1.jpg - 6.jpg + LIGHTBOX)
+        // ==========================================
+        const albumSlots = [
+            { file: "1.jpg", caption: "তুমি আছো বলেই আমার পৃথিবী এত সুন্দর ❤️", date: "প্রিয় স্মৃতি", pos: "object-top" },
+            { file: "2.jpg", caption: "আমার প্রতিটা নিঃশ্বাসে শুধু তোমারই ভালোবাসা 🌸", date: "ভালোবাসা", pos: "object-top" },
+            { file: "3.jpg", caption: "একসাথে কাটানো আমাদের অমূল্য মুহূর্ত 💕", date: "সুন্দর সময়", pos: "object-top" },
+            { file: "4.jpg", caption: "তুমি আমার জীবনের সবচেয়ে সুন্দর অধ্যায় 💍", date: "চিরসাথী", pos: "object-top" },
+            { file: "5.jpg", caption: "তুমি আমার জীবনের সেরা উপহার ✨", date: "অমূল্য স্মৃতি", pos: "object-center" },
+            { file: "6.jpg", caption: "সাজ্জাদ ও নুপুরের চিরকালের ভালোবাসা 💖", date: "আমাদের গল্প", pos: "object-top" }
+        ];
+
+        function renderPhotoGallery() {
+            const grid = document.getElementById('photo-gallery-grid');
+            if (!grid) return;
+
+            grid.innerHTML = albumSlots.map((slot, idx) => `
+                <div class="polaroid cursor-pointer group" onclick="openPhotoLightbox(${idx})">
+                    <div class="relative aspect-[4/5] rounded-2xl overflow-hidden bg-gradient-to-br from-pink-100 via-rose-100 to-pink-200 flex items-center justify-center">
+                        <img src="${slot.file}" alt="${slot.caption}"
+                             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                             class="w-full h-full object-cover ${slot.pos || 'object-top'} group-hover:scale-105 transition duration-500">
+                        <div style="display:none;" class="w-full h-full flex-col items-center justify-center text-pink-400 p-4 text-center">
+                            <i class="fa-solid fa-heart text-4xl mb-2 text-pink-400/80 heartbeat"></i>
+                            <span class="font-romantic text-xl text-pink-600">আমাদের সুন্দর স্মৃতি</span>
+                        </div>
+                    </div>
+                    <div class="text-center mt-3.5 px-1">
+                        <p class="font-romantic text-xl sm:text-2xl text-pink-800 leading-snug">${slot.caption}</p>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        window.openPhotoLightbox = function(idx) {
+            const slot = albumSlots[idx];
+            if (!slot) return;
+            const modal = document.getElementById('lightbox-modal');
+            const img = document.getElementById('lightbox-img');
+            const dateEl = document.getElementById('lightbox-date');
+            const capEl = document.getElementById('lightbox-caption');
+
+            if (img) img.src = slot.file;
+            if (dateEl) dateEl.textContent = slot.date;
+            if (capEl) capEl.textContent = slot.caption;
+            if (modal) {
+                modal.classList.remove('hidden');
+                modal.classList.add('flex');
+            }
+        };
+
+        window.closeLightbox = function() {
+            const modal = document.getElementById('lightbox-modal');
+            if (modal) {
+                modal.classList.add('hidden');
+                modal.classList.remove('flex');
+            }
+        };
+
+        // ==========================================
+        // 8. COUPLE QUIZ (5 QUESTIONS)
+        // ==========================================
+        const quizQuestions = [
+            {
+                q: "আমরা অফিশিয়ালি কোন তারিখে একে অপরের বেস্ট ফ্রেন্ড হয়েছিলাম?",
+                options: ["৬ আগস্ট, ২০২৩", "৩১ অক্টোবর, ২০২৩", "২৫ মার্চ, ২০২৪", "২৫ সেপ্টেম্বর, ২০২৪"],
+                answer: 0
+            },
+            {
+                q: "কোন তারিখে আমাদের ভালোবাসার সম্পর্ক (রিলেশনশিপ) শুরু হয়েছিল?",
+                options: ["৬ আগস্ট, ২০২৩", "৩১ অক্টোবর, ২০২৩", "২৪ মার্চ, ২০২৪", "২৫ মার্চ, ২০২৪"],
+                answer: 1
+            },
+            {
+                q: "ঢাকায় গিয়ে আমাদের প্রথম শুভ বিবাহ কোন তারিখে সম্পন্ন হয়েছিল?",
+                options: ["২৪ মার্চ, ২০২৪", "২৫ মার্চ, ২০২৪", "২৫ সেপ্টেম্বর, ২০২৪", "২০ মে, ২০২৪"],
+                answer: 1
+            },
+            {
+                q: "দুই পরিবারের সম্মতিতে আমাদের দ্বিতীয় বিবাহ কোন তারিখে হয়েছিল?",
+                options: ["৩১ অক্টোবর, ২০২৪", "১৭ জানুয়ারি, ২০২৫", "২৫ সেপ্টেম্বর, ২০২৪", "২৫ মার্চ, ২০২৪"],
+                answer: 2
+            },
+            {
+                q: "নুপুরের শুভ জন্মদিন কোন তারিখে?",
+                options: ["২০ মে, ২০০৮", "২৬ ফেব্রুয়ারি, ২০০৭", "২৫ মার্চ, ২০০৭", "৬ আগস্ট, ২০০৭"],
+                answer: 1
+            }
+        ];
+        let quizIdx = 0;
+        let quizScore = 0;
+
+        function renderQuiz() {
+            const container = document.getElementById('quiz-container');
+            const progressEl = document.getElementById('quiz-progress');
+            if (!container) return;
+
+            if (quizIdx >= quizQuestions.length) {
+                if (progressEl) progressEl.textContent = "সম্পন্ন! 🎉";
+                container.innerHTML = `
+                    <div class="text-center py-4">
+                        <div class="text-5xl mb-3">🏆💖</div>
+                        <h4 class="font-romantic text-3xl text-pink-700 mb-2">দারুণ খেলেছ প্রিয়তমা!</h4>
+                        <p class="text-base text-pink-900 font-semibold mb-5">
+                            তুমি ${toBnDigits(quizQuestions.length)}টি প্রশ্নের মধ্যে ${toBnDigits(quizScore)}টির সঠিক উত্তর দিয়েছ!
+                        </p>
+                        <button onclick="restartQuiz()" class="px-6 py-2.5 rounded-2xl bg-gradient-to-r from-pink-500 to-rose-500 text-white text-base font-bold shadow-md hover:shadow-lg transition">
+                            আবার কুইজ খেলো ✨
+                        </button>
+                    </div>
+                `;
+                return;
+            }
+
+            if (progressEl) progressEl.textContent = `প্রশ্ন ${toBnDigits(quizIdx + 1)} / ${toBnDigits(quizQuestions.length)}`;
+            const current = quizQuestions[quizIdx];
+
+            container.innerHTML = `
+                <p class="font-bold text-base sm:text-lg text-pink-950 mb-4">${current.q}</p>
+                <div class="space-y-2.5">
+                    ${current.options.map((opt, i) => `
+                        <button onclick="answerQuiz(${i}, event)" class="w-full text-left px-4 py-3 rounded-2xl bg-pink-50/90 hover:bg-pink-100 border border-pink-200 text-pink-900 font-semibold text-base transition flex items-center justify-between">
+                            <span>${opt}</span>
+                            <i class="fa-solid fa-chevron-right text-xs text-pink-400"></i>
+                        </button>
+                    `).join('')}
+                </div>
+            `;
+        }
+
+        window.answerQuiz = function(selectedIdx, event) {
+            if (selectedIdx === quizQuestions[quizIdx].answer) {
+                quizScore++;
+                triggerLoveBurst(event);
+            }
+            quizIdx++;
+            renderQuiz();
+        };
+
+        window.restartQuiz = function() {
+            quizIdx = 0;
+            quizScore = 0;
+            renderQuiz();
+        };
+
+        // ==========================================
+        // 8B. LOVE METER (OVERLOADS & EXPLODES)
+        // ==========================================
+        let meterPercent = 0;
+        window.tapLoveMeter = function(event) {
+            triggerLoveBurst(event);
+            meterPercent += 22;
+
+            const percentText = document.getElementById('meter-percent-text');
+            const fillBar = document.getElementById('meter-fill-bar');
+            const hintText = document.getElementById('meter-hint-text');
+
+            if (meterPercent < 100) {
+                if (percentText) percentText.textContent = toBnDigits(meterPercent) + '%';
+                if (fillBar) fillBar.style.width = meterPercent + '%';
+                if (hintText) hintText.textContent = "আরও দ্রুত ট্যাপ করো, ভালোবাসা বাড়ছে... 💓";
+            } else {
+                if (percentText) percentText.textContent = "∞% (ওভারলোড!)";
+                if (fillBar) fillBar.style.width = '100%';
+                const interactiveArea = document.getElementById('meter-interactive-area');
+                const explodedBox = document.getElementById('meter-exploded-box');
+                if (interactiveArea) interactiveArea.classList.add('hidden');
+                if (explodedBox) explodedBox.classList.remove('hidden');
+            }
+        };
+
+        window.resetLoveMeter = function() {
+            meterPercent = 0;
+            const percentText = document.getElementById('meter-percent-text');
+            const fillBar = document.getElementById('meter-fill-bar');
+            const hintText = document.getElementById('meter-hint-text');
+            const interactiveArea = document.getElementById('meter-interactive-area');
+            const explodedBox = document.getElementById('meter-exploded-box');
+
+            if (percentText) percentText.textContent = '০%';
+            if (fillBar) fillBar.style.width = '0%';
+            if (hintText) hintText.textContent = 'ট্যাপ করে মিটারটি পূর্ণ করো 💕';
+            if (interactiveArea) interactiveArea.classList.remove('hidden');
+            if (explodedBox) explodedBox.classList.add('hidden');
+        };
+
+        // ==========================================
+        // 7. INTERACTIVE LOVE LETTER
+        // ==========================================
+        window.openLoveLetter = function(event) {
+            triggerLoveBurst(event);
+            const sealed = document.getElementById('sealed-box');
+            const opened = document.getElementById('opened-letter-box');
+            if (sealed) sealed.classList.add('hidden');
+            if (opened) opened.classList.remove('hidden');
+        };
+
+        const loveQuotes = [
+            "আকাশের সব তারার চেয়েও বেশি ভালোবাসি তোমায়! ✨❤️",
+            "আমার প্রতিটি নিঃশ্বাসে শুধু তোমারই নাম লেখা আছে। 💕",
+            "দূরত্ব যতই হোক, আমার হৃদয় সবসময় তোমার পাশেই থাকে। 🌹",
+            "তুমি আমার জীবনের সেরা উপহার এবং চিরকালের রানী! 👑💖"
+        ];
+        let quoteIdx = 0;
+
+        window.showLoveMeter = function(event) {
+            triggerLoveBurst(event);
+            const out = document.getElementById('love-quote-output');
+            if (out) {
+                out.textContent = loveQuotes[quoteIdx % loveQuotes.length];
+                quoteIdx++;
+            }
+        };
+
+        // ==========================================
+        // 9. FLOATING HEARTS & TAP BURST EFFECT
+        // ==========================================
+        function createBackgroundHearts() {
+            const container = document.getElementById('bg-hearts-container');
+            if (!container) return;
+            const icons = ['fa-heart', 'fa-sparkles', 'fa-heart'];
+
+            if (window._bgHeartsTimer) clearInterval(window._bgHeartsTimer);
+            window._bgHeartsTimer = setInterval(() => {
+                const heart = document.createElement('i');
+                const randomIcon = icons[Math.floor(Math.random() * icons.length)];
+                heart.className = `fa-solid ${randomIcon} floating-bg-heart`;
+
+                heart.style.left = (Math.random() * 100) + 'vw';
+                heart.style.fontSize = (14 + Math.random() * 18) + 'px';
+                const duration = 7 + Math.random() * 6;
+                heart.style.animationDuration = duration + 's';
+
+                container.appendChild(heart);
+                setTimeout(() => heart.remove(), duration * 1000);
+            }, 900);
+        }
+
+        window.triggerLoveBurst = function(e) {
+            const x = (e && e.clientX) ? e.clientX : window.innerWidth / 2;
+            const y = (e && e.clientY) ? e.clientY : window.innerHeight / 2;
+
+            for (let i = 0; i < 14; i++) {
+                const heart = document.createElement('i');
+                heart.className = 'fa-solid fa-heart burst-heart text-pink-500';
+                heart.style.left = x + 'px';
+                heart.style.top = y + 'px';
+                heart.style.fontSize = (14 + Math.random() * 14) + 'px';
+
+                const angle = (Math.PI * 2 * i) / 14 + (Math.random() * 0.4);
+                const distance = 60 + Math.random() * 90;
+                heart.style.setProperty('--tx', Math.cos(angle) * distance + 'px');
+                heart.style.setProperty('--ty', Math.sin(angle) * distance + 'px');
+
+                document.body.appendChild(heart);
+                setTimeout(() => heart.remove(), 950);
+            }
+        };
+
+        function spawnPetalShower(count = 20) {
+            const petals = ['🌸', '🌹', '💖', '🌷'];
+            for (let i = 0; i < count; i++) {
+                const petal = document.createElement('span');
+                petal.className = 'falling-petal text-xl sm:text-2xl';
+                petal.textContent = petals[Math.floor(Math.random() * petals.length)];
+                petal.style.left = (Math.random() * 100) + 'vw';
+                const duration = 2.8 + Math.random() * 2.5;
+                petal.style.animationDuration = duration + 's';
+                petal.style.animationDelay = (Math.random() * 0.6) + 's';
+                document.body.appendChild(petal);
+                setTimeout(() => petal.remove(), (duration + 0.7) * 1000);
+            }
+        }
+
+        window.showAnniversaryLock = function() {
+            const stepWelcome = document.getElementById('curtain-step-welcome');
+            const stepLock = document.getElementById('curtain-step-lock');
+            if (stepWelcome) stepWelcome.classList.add('hidden');
+            if (stepLock) {
+                stepLock.classList.remove('hidden');
+                stepLock.style.animation = 'pageEnter 0.45s ease-out forwards';
+            }
+        };
+
+        window.verifyAnniversaryLock = function(event) {
+            const day = document.getElementById('lock-day')?.value;
+            const month = document.getElementById('lock-month')?.value;
+            const year = document.getElementById('lock-year')?.value;
+            const errEl = document.getElementById('lock-error-msg');
+
+            // Official Anniversary Date: 25 March 2024
+            if (day === '25' && month === '3' && year === '2024') {
+                if (errEl) errEl.classList.add('hidden');
+                enterLoveWorld(event);
+            } else {
+                if (errEl) {
+                    errEl.classList.remove('hidden');
+                    errEl.textContent = (!day || !month || !year)
+                        ? "প্রথমে তারিখ, মাস ও বছর তিনটিই সিলেক্ট করো জান! 💕"
+                        : "উফ! তারিখটি সঠিক হয়নি জান, আমাদের প্রথম বিয়ের তারিখটি মনে করে দাও 💍";
+                }
+            }
+        };
+
+        window.enterLoveWorld = function(event) {
+            triggerLoveBurst(event);
+            spawnPetalShower(26);
+            const curtain = document.getElementById('welcome-curtain');
+            if (curtain) {
+                curtain.classList.add('curtain-hide');
+                setTimeout(() => curtain.remove(), 800);
+            }
+        };
+
+        const missYouNotes = [
+            "মন খারাপ করো না জান, দূরত্ব যতই থাকুক আমার হৃদয় প্রতি মুহূর্তে তোমার পাশেই আছে। ❤️",
+            "চাঁপাইনবাবগঞ্জ পলিটেকনিকে ক্লাস বা হোস্টেলে বসে প্রতিটা ফাঁকা সময়ে শুধু তোমার হাসি মুখটাই মনে পড়ে! 🥺💕",
+            "আমাদের সুন্দর ভবিষ্যতের জন্যই তো এই সাময়িক দূরত্ব—খুব তাড়াতাড়ি ছুটিতে বাড়ি এসে তোমার পাশে বসব ইনশাআল্লাহ! 🌹",
+            "যখনই নিজেকে একা মনে হবে, চোখ বন্ধ করে ভেবো আমি তোমার হাত ধরে ঠিক তোমার পাশেই বসে আছি। 💍💖",
+            "তুমি শুধু আমার স্ত্রী নও, ৬ই আগস্টের সেই সবচেয়ে কাছের বেস্ট ফ্রেন্ড—যাকে ছাড়া আমার একটা দিনও অসম্পূর্ণ! 😘✨",
+            "মনে পড়ে ৩১শে অক্টোবর ফোনে সেই জাদুকরী কথা আর ক্লাস টেনের দিনগুলো? আজও তোমাকে ঠিক ততটাই পাগলের মতো ভালোবাসি! 🌸",
+            "চাঁপাইনবাবগঞ্জ আর তোমার মাঝে যত কিলোমিটার দূরত্বই থাকুক, আমার প্রতিটা নিঃশ্বাসে শুধু তোমারই নাম। ❤️",
+            "তুমি মন খারাপ করলে আমারও এখানে মনটা ভারী হয়ে থাকে—তাই প্লিজ আমার জন্য হলেও একটু মিষ্টি করে হাসো! 😊💕",
+            "পড়াশোনা শেষ করে যেদিন পুরোপুরি তোমার কাছে ফিরে আসব, সেদিন আর কোনো দূরত্ব আমাদের আলাদা করতে পারবে না ইনশাআল্লাহ। 🏡💖",
+            "দূরে থাকলেও আমাদের ভালোবাসা প্রতিদিন আরও গভীর হচ্ছে—তুমি আমার জীবনের সবচেয়ে বড় শক্তি ও প্রেরণা। 💖✨",
+            "ফোনে কথা বলার পরও মনে হয় আরও কত কথা বলা বাকি রয়ে গেল—তুমি আমার জীবনের সবচেয়ে প্রিয় অভ্যাস। 📞❤️",
+            "২৪ ও ২৫শে মার্চের সেই সাহসী দিনগুলোর কথা মনে করলে আজও শক্তি পাই—তুমি পাশে থাকলে পৃথিবীর সব কঠিন পথ সহজ হয়ে যায়! 💪💕",
+            "রাতের আকাশের চাঁদটার দিকে তাকিও জান, আমিও এখান থেকে ওই একই চাঁদের দিকে তাকিয়ে তোমার কথাই ভাবি। 🌙✨",
+            "আল্লাহর কাছে প্রতিটা নামাজে তোমার সুস্থতা, হাসিখুশি মুখ আর আমাদের সারাজীবন একসাথে থাকার দোয়া করি। 🤲💖",
+            "আর কটা দিন ধৈর্য ধরো প্রিয়তমা, ছুটির দিন গুনছি—বাড়ি ফিরেই সবার আগে তোমাকে প্রাণভরে দেখব! 🥰🌹"
+        ];
+        let missIdx = 1;
+
+        window.sendVirtualHug = function(event) {
+            triggerLoveBurst(event);
+            spawnPetalShower(18);
+            const textEl = document.getElementById('missyou-text');
+            const counterEl = document.getElementById('missyou-counter');
+            const currentIdx = missIdx % missYouNotes.length;
+            if (textEl) {
+                textEl.textContent = `"${missYouNotes[currentIdx]}"`;
+            }
+            if (counterEl) {
+                counterEl.textContent = `বার্তা ${toBnDigits(currentIdx + 1)} / ${toBnDigits(missYouNotes.length)}`;
+            }
+            missIdx++;
+        };
+
+        // ==========================================
+        // 10. INITIALIZE ON LOAD
+        // ==========================================
+        function initApp() {
+            navigateTo('home');
+            updateLiveCounters();
+            if (window._liveCounterTimer) clearInterval(window._liveCounterTimer);
+            window._liveCounterTimer = setInterval(updateLiveCounters, 1000);
+            renderChapterContent();
+            renderSpecialDates('all');
+            renderPhotoGallery();
+            renderQuiz();
+            createBackgroundHearts();
+        }
+
+        if (document.readyState === 'loading') {
+            window.addEventListener('DOMContentLoaded', initApp);
+        } else {
+            initApp();
+        }
+        })();
+    </script>
+</body>
+</html>
